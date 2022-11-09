@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".RankFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="랭킹 화면"
-        android:textSize="100dp"/>
+
 
 </FrameLayout>

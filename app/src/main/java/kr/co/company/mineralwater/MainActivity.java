@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    // ActionBar에서 Search 기능 구현했던 것(Fragment 적용 X)
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu){ // ActionBar에서 Search 기능 구현
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem menuItem = menu.findItem(R.id.menu_search);
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onQueryTextChange(String newText) {
             return false;
         }
-    };
+    };*/
 
 
 
