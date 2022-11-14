@@ -1,7 +1,6 @@
 package kr.co.company.mineralwater;
 
-import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     private ArrayList<String> localDataSet;
 
     // 뷰 홀더 클래스
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
         private ImageView imageView;
 
@@ -33,6 +31,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         public TextView getTextView(){
             return textView;
         }
+
     }
 
     // 생성자(생성자를 통해서 데이터 전달 받음)

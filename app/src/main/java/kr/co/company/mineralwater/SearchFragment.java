@@ -20,9 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.sql.Array;
 import java.util.ArrayList;
 
-
-
-
 public class SearchFragment extends Fragment {
 
     private ArrayList<String> searchList = new ArrayList<>();
