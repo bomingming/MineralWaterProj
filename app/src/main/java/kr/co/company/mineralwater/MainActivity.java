@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private RankFragment rankFragment = new RankFragment();
     private InfoFragment infoFragment = new InfoFragment();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
-
 }

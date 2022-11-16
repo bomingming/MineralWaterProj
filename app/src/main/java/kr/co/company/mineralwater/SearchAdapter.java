@@ -27,6 +27,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             super(itemView);
             textView = itemView.findViewById(R.id.text_search_list);
             imageView = itemView.findViewById(R.id.water_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
         public TextView getTextView(){
             return textView;

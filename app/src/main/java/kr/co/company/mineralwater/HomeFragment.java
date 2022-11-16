@@ -22,9 +22,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
 
-    // 리스트 임의 구현
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_menu1, container, false);
@@ -32,7 +29,6 @@ public class HomeFragment extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_main);
         recyclerView.setHasFixedSize(true);
         adapter = new HomeAdapter(searchList);
-
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));

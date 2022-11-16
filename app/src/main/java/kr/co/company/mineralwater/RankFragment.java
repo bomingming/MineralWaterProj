@@ -15,17 +15,17 @@ import java.util.ArrayList;
 
 public class RankFragment extends Fragment {
 
-    private ArrayList<String> searchList = new ArrayList<>();
+    private ArrayList<String> rankList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private SearchAdapter adapter;
+    private RankAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_menu3, container, false);
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_rank);
         recyclerView.setHasFixedSize(true);
-        adapter = new SearchAdapter(searchList);
+        adapter = new RankAdapter(rankList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -42,10 +42,10 @@ public class RankFragment extends Fragment {
     }
 
     private void myData(){
-        searchList.add(new String("랭킹 1위"));
-        searchList.add(new String("랭킹 2위"));
-        searchList.add(new String("랭킹 3위"));
-        searchList.add(new String("랭킹 4위"));
+        rankList.add(new String("물 이름"));
+        rankList.add(new String("물 이름"));
+        rankList.add(new String("물 이름"));
+        rankList.add(new String("물 이름"));
     }
 
 

@@ -1,5 +1,7 @@
 package kr.co.company.mineralwater;
 
+import android.content.Intent;
+import android.graphics.text.TextRunShaper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,24 +23,32 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_search_list); // 과연 목록이 나올까 랭킹이 나올까
-            imageView = itemView.findViewById(R.id.water_image);
+            textView = itemView.findViewById(R.id.rank_name); // 과연 목록이 나올까 랭킹이 나올까
+            imageView = itemView.findViewById(R.id.rank_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
         public TextView getTextView(){
             return textView;
         }
     }
-
     public RankAdapter(ArrayList<String> dataSet){
         localDataSet = dataSet;
     }
 
     @NonNull
     @Override
-    public RankAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item_search, parent, false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item_rank, parent, false);
         RankAdapter.MyViewHolder viewHolder = new RankAdapter.MyViewHolder(view);
-        return new RankAdapter.MyViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
