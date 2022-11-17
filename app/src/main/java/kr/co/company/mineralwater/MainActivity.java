@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.app.ActionBar; // 액션바 다루기 위함
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit();
+
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
@@ -57,5 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        // 기본적으로 액션바 보이지 않게 하기기
+       ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
     }
 }
