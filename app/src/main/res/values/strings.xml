@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">아이시스 500ml</string>
 
-    <!--검색창에 띄워질 문구-->
-    <!--<string name="query_hint">제품명을 입력해주세요</string>-->
 </resources>
