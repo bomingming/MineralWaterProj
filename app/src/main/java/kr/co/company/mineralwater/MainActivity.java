@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // GPS 기능 추가
+        //LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE); // 객체 참조
+        //Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER); // 가장 최근의 위치 정보 가지고 오기
+
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit();
-
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){

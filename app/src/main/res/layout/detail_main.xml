@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/maruburisemibold"
         android:text="제품 이름"
         app:layout_constraintStart_toStartOf="parent"
