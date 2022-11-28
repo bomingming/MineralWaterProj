@@ -127,7 +127,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         }catch (JSONException e){
             e.printStackTrace();
         }
-        Log.e("과연 str의 값이 나올까?", str);
+        //Log.e("과연 str의 값이 나올까?", str);
         return str;
     }
 

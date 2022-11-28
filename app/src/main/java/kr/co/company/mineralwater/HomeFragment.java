@@ -50,11 +50,6 @@ public class HomeFragment extends Fragment {
         /*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy); // 추가하지 않을 경우 서버에 URL로 접근 불가*/
 
-        //String test =
-        /*new Thread(()->{
-            adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-        }).start();*/
-
         myData();
 
         return v;
@@ -66,13 +61,15 @@ public class HomeFragment extends Fragment {
     }
 
     private void myData(){ // 매개변수 추가
-        /*searchList.add(new String("목록 1"));
-        searchList.add(new String("목록 2"));
-        searchList.add(new String("목록 3"));
-        searchList.add(new String("목록 4"));*/
         new Thread(()->{
+            searchList.add(new String("목록 1"));
+            searchList.add(new String("목록 2"));
+            searchList.add(new String("목록 3"));
+            searchList.add(new String("목록 4"));
             String input = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
             searchList.add(input);
+            //Log.e("리스트 값", searchList.toString());
+
 
         }).start();
     }
