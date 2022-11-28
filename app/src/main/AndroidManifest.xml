@@ -6,6 +6,9 @@
     <!--인터넷 접속 허용-->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--GPS 추가-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -37,9 +40,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".PopupActivity"/>
+        <activity android:name=".LodingActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     </application>
-    <!--GPS 추가-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 
 
 </manifest>

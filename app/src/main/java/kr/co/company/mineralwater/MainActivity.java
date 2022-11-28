@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.appcompat.app.ActionBar; // 액션바 다루기 위함
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         // GPS 기능 추가
         //LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE); // 객체 참조
         //Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER); // 가장 최근의 위치 정보 가지고 오기
+
+        // 로딩창 구현
+        Intent intent = new Intent(this, LodingActivity.class);
+        startActivity(intent);
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit();

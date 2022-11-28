@@ -75,8 +75,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     // JSON 파싱 시도
     public String JSONLink(String url){
-        String test = "시작";
-        Log.e("JSONLink 메소드 시작", test);
+        /*String test = "시작";
+        Log.e("JSONLink 메소드 시작", test);*/
 
         String receiveMsg = ""; // 초기화 필수
         //InputStream is = null;

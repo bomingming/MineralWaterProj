@@ -66,9 +66,13 @@ public class HomeFragment extends Fragment {
             searchList.add(new String("목록 2"));
             searchList.add(new String("목록 3"));
             searchList.add(new String("목록 4"));
-            String input = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
+
+            String input = new String(adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/")));
+            Log.e("인풋값", input);
             searchList.add(input);
-            //Log.e("리스트 값", searchList.toString());
+            searchList.add("얍");
+            Log.e("리스트 값", searchList.toString());
+
 
 
         }).start();
