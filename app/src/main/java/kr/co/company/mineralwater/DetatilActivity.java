@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetatilActivity extends AppCompatActivity {
@@ -15,6 +17,10 @@ public class DetatilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_main);
+
+        // 액션바 타이틀 수정
+        ActionBar ac = getSupportActionBar();
+        ac.setTitle("제품 상세 정보");
 
         // 커스텀 다이얼로그 구현
         dialog = new Dialog(DetatilActivity.this); // Dialog 초기화
