@@ -31,9 +31,12 @@ public class MainActivity extends AppCompatActivity {
         //LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE); // 객체 참조
         //Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER); // 가장 최근의 위치 정보 가지고 오기
 
-        // 로딩창 구현
+        // 로딩창
         Intent intent = new Intent(this, LodingActivity.class);
         startActivity(intent);
+
+
+
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit();

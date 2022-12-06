@@ -1,7 +1,11 @@
 package kr.co.company.mineralwater;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +23,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
     private RecyclerView recyclerView;
     private ArrayList<String> localDataSet;
+    private HomeFragment homeFragment;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
+    public static class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
 
         private TextView textView;
         private ImageView imageView;
@@ -34,6 +40,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             super(itemView);
             textView = itemView.findViewById(R.id.name_text_slide);
             imageView = itemView.findViewById(R.id.water_image_slide);
+
+            /*// 화면 출력 시도
+            NewThread newThread = new NewThread();
+            newThread.start();*/
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -48,6 +58,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         public TextView getTextView(){
             return textView;
         }
+
     }
 
     public HomeAdapter(ArrayList<String> dataSet){
@@ -111,25 +122,49 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return receiveMsg; // JSON 데이터를 반환
     }
 
-    String JSONParse(String jsonStr){
+    /*String JSONParse(String jsonStr){
         String str = new String();
         //String waterName = ""; // JSON 데이터 넣을 문자열 변수 초기화 선언
         try{
             JSONArray jsonArray = new JSONArray(jsonStr);
-            /*for(int i=0; i<jsonArray.length(); i++){
+            for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                waterName = jsonObject.getString("name");
-            }*/
-            JSONObject newjsonObject = jsonArray.getJSONObject(0);
+                str = jsonObject.getString("name");
+            }
+            *//*JSONObject newjsonObject = jsonArray.getJSONObject(0);
             String newWaterName = newjsonObject.getString("name");
-            str = newWaterName;
+            str = newWaterName;*//*
 
         }catch (JSONException e){
             e.printStackTrace();
         }
-        //Log.e("과연 str의 값이 나올까?", str);
+        Log.e("과연 str의 값이 나올까?", str);
         return str;
+    }*/
+    ArrayList<String> JSONParse(String jsonStr){
+        String str = new String();
+        ArrayList<String> DataArray = new ArrayList<>();
+        //String waterName = ""; // JSON 데이터 넣을 문자열 변수 초기화 선언
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String str2 = jsonObject.getString("name");
+
+                DataArray.add(str2);
+                //Log.e("str2의 값?", str2);
+
+            }
+            /*JSONObject newjsonObject = jsonArray.getJSONObject(0);
+            String newWaterName = newjsonObject.getString("name");
+            str = newWaterName;*/
+
+        }catch (JSONException e){
+            String logCatch = "예외발생";
+            Log.e("예외 값", logCatch);
+            e.printStackTrace();
+        }
+        //Log.e("DataArray의 값", DataArray.toString());
+        return DataArray;
     }
-
-
 }
