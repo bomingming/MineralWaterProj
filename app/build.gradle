@@ -41,4 +41,7 @@ dependencies {
     // RxJava 사용 위한 라이브러리
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.7'
+
+    // RxJava 사용 위한 라이브러리 2
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
 }

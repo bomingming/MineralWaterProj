@@ -24,6 +24,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.reactivestreams.Subscriber;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,81 +52,27 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         adapter = new HomeAdapter(searchList);
 
-        //myData();
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-
-        /*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy); // 추가하지 않을 경우 서버에 URL로 접근 불가*/
-
-        /*new Thread(()->{
-            searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-            Log.e("searchList 값", searchList.toString());
-        }).start();*/
-
-        /*new Thread(new Runnable() {
+        // 받아온 JSON 데이터를 UI에 갱신하는 Thread
+        new Thread(){
             @Override
-            public void run() {
-                //searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-                myData();
-
+            public void run(){
+                searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
+                getActivity().runOnUiThread(new Runnable(){
+                    @Override
+                    public void run(){
+                        adapter.setSearchList(searchList);
+                    }
+                });
             }
-        }).start();*/
+        }.start();
 
-        // 화면 출력 시도
-            /*NewThread newThread = new NewThread();
-            newThread.start();
-            Log.e("메인 서치값",searchList.toString());*/
-
-//        NewThread newThread = new NewThread();
-//        newThread.start();
-        Log.e("메인 서치값",searchList.toString());
-
-        myData();
         return v;
     }
-
-//   @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        Data();
-//    }
-//    private void Data(){
-//        searchList = adapter.JSONParse(adapter.JSONLink("https://dict.ausucomm.com:4443/rjh/"));
-//    }
-
-//    class NewThread extends Thread{
-//        HomeAdapter homeAdapter;
-//        ArrayList<String> tt;
-//        public void run(){
-//            tt = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-//
-//            Message message = mmHandler.obtainMessage();
-//            Bundle bundle = new Bundle();
-//            bundle.putStringArrayList("water", tt);
-//            message.setData(bundle);
-//            mmHandler.sendMessage(message);
-//
-//        }
-//    }
-//
-//    class mHandle extends Handler{
-//
-//        @Override
-//        public void handleMessage(@NonNull Message message){
-//            super.handleMessage(message);
-//
-//            Bundle bundle = message.getData();
-//            searchList = bundle.getStringArrayList("water");
-//            Log.e("핸들러 결과", searchList.toString());
-//
-//
-//        }
-//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
@@ -134,22 +81,24 @@ public class HomeFragment extends Fragment {
 
     private void myData(){
 
-        new Thread(()->{
-            searchList.add(new String("목록 1"));
-            searchList.add(new String("목록 2"));
-            searchList.add(new String("목록 3"));
-            searchList.add(new String("목록 4"));
-            //Log.e("searchList 첫번째 값", searchList.toString());
-
-            //searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-            //searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-
-            Log.e("searchList 값?", searchList.toString());
-        }).start();
+//        new Thread(()->{
+////            searchList.add(new String("목록 1"));
+////            searchList.add(new String("목록 2"));
+////            searchList.add(new String("목록 3"));
+////            searchList.add(new String("목록 4"));
+//            //Log.e("searchList 첫번째 값", searchList.toString());
+//
+//            //searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
+//            searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
+//
+//            /*Log.e("searchList 값?", searchList.toString());
+//            Log.e("타입 확인", searchList.getClass().getName());
+//            Log.e("타입 check", searchList.toString().getClass().getName());*/
+//
+//        }).start();
         /*searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
         Log.e("searchList 값?", searchList.toString());*/
     }
-
-
-
 }
+
+

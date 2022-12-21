@@ -27,9 +27,7 @@ import java.util.Observable;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
-    private RecyclerView recyclerView;
     private ArrayList<String> localDataSet;
-    private HomeFragment homeFragment;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
 
@@ -40,10 +38,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             super(itemView);
             textView = itemView.findViewById(R.id.name_text_slide);
             imageView = itemView.findViewById(R.id.water_image_slide);
-
-            /*// 화면 출력 시도
-            NewThread newThread = new NewThread();
-            newThread.start();*/
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -58,7 +52,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         public TextView getTextView(){
             return textView;
         }
-
     }
 
     public HomeAdapter(ArrayList<String> dataSet){
@@ -84,87 +77,45 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return localDataSet.size();
     }
 
+    public void setSearchList(ArrayList<String> searchList){
+        this.localDataSet = searchList;
+        notifyDataSetChanged();
+    }
+
     // JSON 파싱 시도
     public String JSONLink(String url){
-        /*String test = "시작";
-        Log.e("JSONLink 메소드 시작", test);*/
 
         String receiveMsg = ""; // 초기화 필수
-        //InputStream is = null;
-
-        /*StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy); // 추가하지 않을 경우 서버에 URL로 접근 불가*/
-
 
         try {
-            /*String test1 = "트라이 간드아";
-            Log.e("시작했을까?", test1);*/
-
             InputStream is = new URL(url).openStream();
 
-            /*String test2 = "잘 나옴!";
-            Log.e("중간부분은?", test2);*/
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             String str;
             StringBuffer buffer = new StringBuffer();
 
             while((str = rd.readLine()) != null){
                 buffer.append(str);
-                //Log.e("이 값은?", str);
             }
             receiveMsg = buffer.toString();
         }catch (IOException e){
-            String hehe = "헐";
-            Log.e("설마...? 캐치 오류?", hehe);
             e.printStackTrace();
         }
-        //Log.e("리시브 메시지", receiveMsg);
         return receiveMsg; // JSON 데이터를 반환
     }
 
-    /*String JSONParse(String jsonStr){
-        String str = new String();
-        //String waterName = ""; // JSON 데이터 넣을 문자열 변수 초기화 선언
-        try{
-            JSONArray jsonArray = new JSONArray(jsonStr);
-            for(int i=0; i<jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                str = jsonObject.getString("name");
-            }
-            *//*JSONObject newjsonObject = jsonArray.getJSONObject(0);
-            String newWaterName = newjsonObject.getString("name");
-            str = newWaterName;*//*
-
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-        Log.e("과연 str의 값이 나올까?", str);
-        return str;
-    }*/
     ArrayList<String> JSONParse(String jsonStr){
-        String str = new String();
         ArrayList<String> DataArray = new ArrayList<>();
-        //String waterName = ""; // JSON 데이터 넣을 문자열 변수 초기화 선언
         try{
             JSONArray jsonArray = new JSONArray(jsonStr);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String str2 = jsonObject.getString("name");
-
                 DataArray.add(str2);
-                //Log.e("str2의 값?", str2);
-
             }
-            /*JSONObject newjsonObject = jsonArray.getJSONObject(0);
-            String newWaterName = newjsonObject.getString("name");
-            str = newWaterName;*/
-
         }catch (JSONException e){
-            String logCatch = "예외발생";
-            Log.e("예외 값", logCatch);
             e.printStackTrace();
         }
-        //Log.e("DataArray의 값", DataArray.toString());
         return DataArray;
     }
 }
