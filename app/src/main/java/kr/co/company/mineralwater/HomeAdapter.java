@@ -48,10 +48,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             });
         }
 
-        // getText 어쩌구? 추가 안 해도 오류 안 뜨나 시도하는 중
-        public TextView getTextView(){
+        // getText 어쩌구? 추가 안 해도 오류 안 뜨나 시도하는 중 --> 오류 안 뜸
+        /*public TextView getTextView(){
             return textView;
-        }
+        }*/
     }
 
     public HomeAdapter(ArrayList<String> dataSet){
@@ -62,7 +62,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item_main, parent, false);
-        HomeAdapter.MyViewHolder viewHolder = new HomeAdapter.MyViewHolder(view);
+        MyViewHolder viewHolder = new HomeAdapter.MyViewHolder(view);
 
         return viewHolder;
     }
@@ -82,7 +82,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         notifyDataSetChanged();
     }
 
-    // JSON 파싱 시도
+    // JSON Link로부터 데이터를 받아오는 메소드
     public String JSONLink(String url){
 
         String receiveMsg = ""; // 초기화 필수

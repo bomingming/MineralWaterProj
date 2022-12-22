@@ -20,7 +20,6 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_menu2, container, false);
-
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         adapter = new SearchAdapter(searchList);
@@ -30,19 +29,25 @@ public class SearchFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
+        // 받아온 JSON 데이터를 UI에 갱신하는 Thread
+        new Thread() {
+            @Override
+            public void run() {
+                searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.setSearchList(searchList);
+                    }
+                });
+            }
+        }.start();
+
         return v;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        myData();
-    }
-
-    private void myData(){
-        searchList.add(new String("목록 1"));
-        searchList.add(new String("목록 2"));
-        searchList.add(new String("목록 3"));
-        searchList.add(new String("목록 4"));
     }
 }

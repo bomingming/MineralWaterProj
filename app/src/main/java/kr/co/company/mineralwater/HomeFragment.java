@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
         new Thread(){
             @Override
             public void run(){
-                searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
+                searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
                 getActivity().runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
@@ -77,27 +77,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-    }
-
-    private void myData(){
-
-//        new Thread(()->{
-////            searchList.add(new String("목록 1"));
-////            searchList.add(new String("목록 2"));
-////            searchList.add(new String("목록 3"));
-////            searchList.add(new String("목록 4"));
-//            //Log.e("searchList 첫번째 값", searchList.toString());
-//
-//            //searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-//            searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-//
-//            /*Log.e("searchList 값?", searchList.toString());
-//            Log.e("타입 확인", searchList.getClass().getName());
-//            Log.e("타입 check", searchList.toString().getClass().getName());*/
-//
-//        }).start();
-        /*searchList = adapter.JSONParse(adapter.JSONLink("https://dict.asuscomm.com:4443/rjh/"));
-        Log.e("searchList 값?", searchList.toString());*/
     }
 }
 

@@ -8,6 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
@@ -56,5 +66,47 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
     @Override
     public int getItemCount() {
         return localDataSet.size();
+    }
+
+    public void setSearchList(ArrayList<String> searchList){
+        this.localDataSet = searchList;
+        notifyDataSetChanged();
+    }
+
+    // JSON Link로부터 데이터를 받아오는 메소드
+    public String JSONLink(String url){
+
+        String receiveMsg = ""; // 초기화 필수
+
+        try {
+            InputStream is = new URL(url).openStream();
+
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String str;
+            StringBuffer buffer = new StringBuffer();
+
+            while((str = rd.readLine()) != null){
+                buffer.append(str);
+            }
+            receiveMsg = buffer.toString();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return receiveMsg; // JSON 데이터를 반환
+    }
+
+    ArrayList<String> JSONParse(String jsonStr){
+        ArrayList<String> DataArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String str2 = jsonObject.getString("name");
+                DataArray.add(str2);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return DataArray;
     }
 }
