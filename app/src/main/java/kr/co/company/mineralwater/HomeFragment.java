@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,7 @@ public class HomeFragment extends Fragment {
     public ArrayList<String> searchList = new ArrayList<>(); // 생수 이름 리스트
     private RecyclerView recyclerView;
     public HomeAdapter adapter;
+    public RadioGroup radioGroup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -57,7 +60,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        // 받아온 JSON 데이터를 UI에 갱신하는 Thread
         new Thread(){
             @Override
             public void run(){
@@ -70,9 +72,47 @@ public class HomeFragment extends Fragment {
                 });
             }
         }.start();
+        
+        // RadioGroup 객체 선언
+        radioGroup = (RadioGroup) v.findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i == R.id.radiobutton1){ // ~1L 버튼 누를 경우
+                    new Thread(){
+                        @Override
+                        public void run(){
+                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                            getActivity().runOnUiThread(new Runnable(){
+                                @Override
+                                public void run(){
+                                    adapter.setSearchList(searchList);
+                                }
+                            });
+                        }
+                    }.start();
+                }else if(i==R.id.radiobutton2){ // 1L~ 버튼 누를 경우
+                    new Thread(){
+                        @Override
+                        public void run(){
+                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-2.php"));
+                            getActivity().runOnUiThread(new Runnable(){
+                                @Override
+                                public void run(){
+                                    adapter.setSearchList(searchList);
+                                }
+                            });
+                        }
+                    }.start();
+                }
+            }
+        });
 
         return v;
     }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
