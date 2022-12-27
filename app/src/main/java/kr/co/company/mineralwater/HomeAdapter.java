@@ -120,7 +120,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String waterName = jsonObject.getString("name"); // 제품명 문자열로 파싱
                 String waterMl = jsonObject.getString("capacity"); // 제품 용량 문자열로 파싱
-                String waterData = waterName+", "+waterMl+"ml";
+                String waterData = waterName+" "+waterMl+"ml"; // '제품명, 제품용량ml' 형식으로 문자열 저장
                 DataArray.add(waterData);
             }
         }catch (JSONException e){

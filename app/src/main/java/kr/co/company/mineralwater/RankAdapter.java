@@ -111,8 +111,10 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             JSONArray jsonArray = new JSONArray(jsonStr);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String str2 = jsonObject.getString("name");
-                DataArray.add(str2);
+                String waterName = jsonObject.getString("name");
+                String waterMl = jsonObject.getString("capacity");
+                String waterData = waterName+" "+waterMl+"ml";
+                DataArray.add(waterData);
             }
         }catch (JSONException e){
             e.printStackTrace();
