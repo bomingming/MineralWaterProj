@@ -19,8 +19,9 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="제품명"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:gravity="center"
+        android:fontFamily="@font/maruburisemibold"
         app:layout_constraintStart_toStartOf="@+id/water_image_slide"
         app:layout_constraintTop_toBottomOf="@+id/water_image_slide" />
 
