@@ -23,16 +23,20 @@ import java.util.ArrayList;
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
 
     private ArrayList<String> localDataSet;
+    private ArrayList<String> numbDataSet;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
+        private TextView rank_number;
         private ImageView imageView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.rank_name); // 과연 목록이 나올까 랭킹이 나올까
             imageView = itemView.findViewById(R.id.rank_image);
+            rank_number = itemView.findViewById(R.id.rank_number); // 순위
 
+            // 항목 클릭 시 상세정보 화면으로 이동
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -45,9 +49,14 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             return textView;
         }
     }
-    public RankAdapter(ArrayList<String> dataSet){
+    // 랭킹 숫자 구현 시도
+    public RankAdapter(ArrayList<String> dataSet, ArrayList<String> numSet){
         localDataSet = dataSet;
+        numbDataSet = numSet;
     }
+    
+    // Fragment에서 recyclerView를 채울 데이터(ArrayList) - 원본
+    // public RankAdapter(ArrayList<String> dataSet){localDataSet = dataSet;}
 
     @NonNull
     @Override
@@ -61,6 +70,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull RankAdapter.MyViewHolder holder, int position) {
         holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
+        holder.rank_number.setText(numbDataSet.get(position)); // 랭킹 숫자... 이렇게 추가해도 될까?
     }
 
     @Override

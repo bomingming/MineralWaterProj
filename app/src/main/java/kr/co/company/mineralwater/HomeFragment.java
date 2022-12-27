@@ -26,7 +26,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.reactivestreams.Subscriber;
+//import org.reactivestreams.Subscriber;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,9 +36,6 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
-
-import io.reactivex.rxjava3.core.ObservableEmitter;
-import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 
 
 public class HomeFragment extends Fragment {
@@ -108,11 +105,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
-
         return v;
     }
-
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){

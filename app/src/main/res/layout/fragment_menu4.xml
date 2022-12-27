@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="동의대학교 ICT융복합연구소\n\n\n류준호 20183026@office.deu.ac.kr
-            \n\n김보민 20180020@office.deu.ac.kr\n\n정현진\n\n\n웹페이지 주소"
+            \n\n김보민 20180020@office.deu.ac.kr\n\n정현진 20184075@office.deu.ac.kr\n\n\n웹페이지 주소"
             android:textSize="15sp"
             android:fontFamily="@font/jua"
             android:textColor="@color/black"

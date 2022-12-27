@@ -1,6 +1,7 @@
 package kr.co.company.mineralwater;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class RankFragment extends Fragment {
 
     private ArrayList<String> rankList = new ArrayList<>();
+    private ArrayList<String> rankNum = new ArrayList<>();
     private RecyclerView recyclerView;
     private RankAdapter adapter;
 
@@ -22,7 +24,7 @@ public class RankFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_menu3, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_rank);
         recyclerView.setHasFixedSize(true);
-        adapter = new RankAdapter(rankList);
+        adapter = new RankAdapter(rankList,rankNum);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -34,6 +36,13 @@ public class RankFragment extends Fragment {
             @Override
             public void run(){
                 rankList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                int num = 0;
+                // 랭킹 순위 설정 시도
+                for(int i=0; i<rankList.size(); i++){
+                    num++;
+                    rankNum.add(Integer.toString(num));
+                    Log.e("num의 값", Integer.toString(num));
+                }
                 getActivity().runOnUiThread(new Runnable(){
                     @Override
                     public void run(){

@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//import android.widget.SearchView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,6 +17,7 @@ import androidx.appcompat.widget.SearchView;
 public class SearchFragment extends Fragment {
 
     private ArrayList<String> searchList = new ArrayList<>();
+    private ArrayList<String> newSearchList = new ArrayList<>();
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private SearchView searchView;
@@ -52,23 +52,25 @@ public class SearchFragment extends Fragment {
         searchView = (SearchView) v.findViewById(R.id.search_view); // searchView 객체 생성
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                // 입력받은 문자열 처리
-                /*Log.e("서치리스트는?", searchList.toString());
-                int i = searchList.indexOf(s);
-                Log.e("i의 값", Integer.toString(i));*/
-
-                for(int i=0; i<searchList.size(); i++){
-                    if(searchList.get(i) != s){
-                        searchList.set(i, "얍");
-
+            public boolean onQueryTextSubmit(String s) { // 입력받은 문자열 처리
+                new Thread() {
+                    @Override
+                    public void run() {
+                        searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
+                        newSearchList.clear();
+                        for(int i=0; i<searchList.size(); i++){
+                            if(searchList.get(i).equals(s)){ // 검색창 입력값과 searchList 값 일치하는지 비교교
+                               newSearchList.add(searchList.get(i));
+                            }
+                        }
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.setSearchList(newSearchList);
+                            }
+                        });
                     }
-                    /*Log.e("searchList 값", searchList.get(i));
-                    Log.e("type", searchList.get(i).getClass().getName());
-                    Log.e("입력값", s);*/
-
-                }
-                Log.e("for문 테스트", searchList.toString());
+                }.start();
 
                 return false;
             }
