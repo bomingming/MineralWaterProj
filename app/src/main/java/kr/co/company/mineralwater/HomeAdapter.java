@@ -48,10 +48,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if(pos != RecyclerView.NO_POSITION){
                         // 클릭 이벤트
 
+
+
+
+                        Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                        view.getContext().startActivity(intent);
+
                     }
 
-                    Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                    view.getContext().startActivity(intent);
+                    /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                    view.getContext().startActivity(intent);*/
                 }
             });
         }

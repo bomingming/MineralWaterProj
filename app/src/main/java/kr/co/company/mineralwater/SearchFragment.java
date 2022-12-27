@@ -59,8 +59,8 @@ public class SearchFragment extends Fragment {
                         searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
                         newSearchList.clear();
                         for(int i=0; i<searchList.size(); i++){
-                            if(searchList.get(i).equals(s)){ // 검색창 입력값과 searchList 값 일치하는지 비교교
-                               newSearchList.add(searchList.get(i));
+                            if(searchList.get(i).contains(s)){ // 검색창 입력값을 포함하는 값인지 확인
+                                newSearchList.add(searchList.get(i));
                             }
                         }
                         getActivity().runOnUiThread(new Runnable() {
