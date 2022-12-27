@@ -123,7 +123,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String waterName = jsonObject.getString("name"); // 제품명 문자열로 파싱
                 String waterMl = jsonObject.getString("capacity"); // 제품 용량 문자열로 파싱
-                if(waterMl.contains("000")){
+                if(Integer.parseInt(waterMl) >= 1000){
                     double waterMlInt = Integer.parseInt(waterMl);
                     waterMlInt = waterMlInt/1000;
                     waterMl = Double.toString(waterMlInt);

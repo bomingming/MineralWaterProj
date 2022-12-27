@@ -106,10 +106,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             JSONArray jsonArray = new JSONArray(jsonStr);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String waterName = jsonObject.getString("name");
-                String waterMl = jsonObject.getString("capacity");
-                String waterData = waterName+" "+waterMl+"ml";
-                DataArray.add(waterData);
+                String waterName = jsonObject.getString("name"); // 제품명 문자열로 파싱
+                String waterMl = jsonObject.getString("capacity"); // 제품 용량 문자열로 파싱
+                if(Integer.parseInt(waterMl) >= 1000){
+                    double waterMlInt = Integer.parseInt(waterMl);
+                    waterMlInt = waterMlInt/1000;
+                    waterMl = Double.toString(waterMlInt);
+                    String waterData = waterName+" "+waterMl+"L"; // '제품명, 제품용량ml' 형식으로 문자열 저장
+                    DataArray.add(waterData);
+                }else{
+                    String waterData = waterName+" "+waterMl+"ml"; // '제품명, 제품용량ml' 형식으로 문자열 저장
+                    DataArray.add(waterData);
+                }
             }
         }catch (JSONException e){
             e.printStackTrace();
