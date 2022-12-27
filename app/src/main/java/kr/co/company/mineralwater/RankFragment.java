@@ -37,11 +37,9 @@ public class RankFragment extends Fragment {
             public void run(){
                 rankList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
                 int num = 0;
-                // 랭킹 순위 설정 시도
                 for(int i=0; i<rankList.size(); i++){
                     num++;
                     rankNum.add(Integer.toString(num));
-                    Log.e("num의 값", Integer.toString(num));
                 }
                 getActivity().runOnUiThread(new Runnable(){
                     @Override

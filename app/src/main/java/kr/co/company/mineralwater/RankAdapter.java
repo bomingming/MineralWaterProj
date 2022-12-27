@@ -32,8 +32,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.rank_name); // 과연 목록이 나올까 랭킹이 나올까
-            imageView = itemView.findViewById(R.id.rank_image);
+            textView = itemView.findViewById(R.id.rank_name); // 제품명
+            imageView = itemView.findViewById(R.id.rank_image); // 제품 사진
             rank_number = itemView.findViewById(R.id.rank_number); // 순위
 
             // 항목 클릭 시 상세정보 화면으로 이동
@@ -49,7 +49,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             return textView;
         }
     }
-    // 랭킹 숫자 구현 시도
+
     public RankAdapter(ArrayList<String> dataSet, ArrayList<String> numSet){
         localDataSet = dataSet;
         numbDataSet = numSet;
@@ -70,7 +70,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull RankAdapter.MyViewHolder holder, int position) {
         holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
-        holder.rank_number.setText(numbDataSet.get(position)); // 랭킹 숫자... 이렇게 추가해도 될까?
+        holder.rank_number.setText(numbDataSet.get(position)); // 랭킹 숫자
     }
 
     @Override

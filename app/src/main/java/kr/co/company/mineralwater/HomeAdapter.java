@@ -1,6 +1,7 @@
 package kr.co.company.mineralwater;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -42,6 +43,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // 클릭된 아이템의 위치 가져오기
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        // 클릭 이벤트
+
+                    }
+
                     Intent intent = new Intent(view.getContext(), DetatilActivity.class);
                     view.getContext().startActivity(intent);
                 }
@@ -110,8 +118,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             JSONArray jsonArray = new JSONArray(jsonStr);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String str2 = jsonObject.getString("name");
-                DataArray.add(str2);
+                String waterName = jsonObject.getString("name"); // 제품명 문자열로 파싱
+                String waterMl = jsonObject.getString("capacity"); // 제품 용량 문자열로 파싱
+                String waterData = waterName+", "+waterMl+"ml";
+                DataArray.add(waterData);
             }
         }catch (JSONException e){
             e.printStackTrace();
