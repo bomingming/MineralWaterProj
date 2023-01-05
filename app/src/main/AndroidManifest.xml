@@ -7,7 +7,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--GPS 추가-->
+    <!--네트워크만을 사용하여 사용자의 대략적인 위치를 가져오는 권한-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--GPS와 네트워크를 모두 사용하여 사용자의 정확한 위치를 가져오는 권한-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"

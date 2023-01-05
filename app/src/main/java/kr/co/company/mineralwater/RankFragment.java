@@ -35,7 +35,7 @@ public class RankFragment extends Fragment {
         new Thread(){
             @Override
             public void run(){
-                rankList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                rankList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/3.php"));
                 int num = 0;
                 for(int i=0; i<rankList.size(); i++){
                     num++;

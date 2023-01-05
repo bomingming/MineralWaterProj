@@ -1,22 +1,37 @@
 package kr.co.company.mineralwater;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class DetatilActivity extends AppCompatActivity {
 
     Dialog dialog; // 커스텀 다이얼로그
 
+    // 상세 정보에 데이터 연결 시도 중
+    public HomeAdapter adapter;
+    public ArrayList<String> searchList = new ArrayList<>();
+    public HomeFragment homeFragment;
+    public String s;
+
+    private TextView water_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_main);
+
+        water_name = findViewById(R.id.water_name);
 
         // 액션바 타이틀 수정
         ActionBar ac = getSupportActionBar();
@@ -35,6 +50,28 @@ public class DetatilActivity extends AppCompatActivity {
                 showMyDialog();
             }
         });
+
+        Intent intent = getIntent();
+        water_name.setText(intent.getStringExtra("값 테스트"));
+        //s = homeFragment.selectName;
+        //Log.e("타입 확인", homeFragment.selectName.getClass().getName());
+        //Log.e("값 받아와졌는지 확인", s);
+        adapter = new HomeAdapter(searchList);
+
+        new Thread(){
+            @Override
+            public void run(){
+                //searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                String testStr = adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php");
+
+                (DetatilActivity.this).runOnUiThread(new Runnable(){ // Activity 형식에 맞게 DetatilActivity.this로 수정
+                    @Override
+                    public void run(){
+                        //adapter.setSearchList(searchList);
+                    }
+                });
+            }
+        }.start();
     }
 
     // 커스텀 다이얼로그 디자인하는 함수

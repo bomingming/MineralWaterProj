@@ -41,6 +41,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                    intent.putExtra("값 테스트", "랭킹 화면과 연결 성공");
                     view.getContext().startActivity(intent);
                 }
             });

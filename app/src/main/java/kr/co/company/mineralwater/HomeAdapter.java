@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -30,8 +31,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     private ArrayList<String> localDataSet;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
+    private String selectData; // 선택한 항목
+    public String selectName; // 선택한 항목의 제품명
+    public String selectSize; // 선택한 항목의 제품 용량
 
+    public class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
+
+        public ArrayList<String> searchList = new ArrayList<>();
+        HomeAdapter adapter;
         private TextView textView;
         private ImageView imageView;
 
@@ -48,9 +55,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     if(pos != RecyclerView.NO_POSITION){
                         // 클릭 이벤트
 
-                        Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                        view.getContext().startActivity(intent);
+                        // 리스너 객체의 메소드 호출
+                        if(mListener != null){
+                            mListener.onItemClick(view, pos);
+                        }
 
+                        Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                        intent.putExtra("값 테스트", "메인 화면과 연결 성공");
+                        view.getContext().startActivity(intent);
                     }
 
                     /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
@@ -63,6 +75,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         /*public TextView getTextView(){
             return textView;
         }*/
+    }
+
+    // 리스너 객체 참조를 저장하는 변수
+    private OnItemClickListener mListener = null;
+
+    // OnItemClickListener 리스너 객체 참조를 Adapter에 전달하는 메소드
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
     }
 
     public HomeAdapter(ArrayList<String> dataSet){

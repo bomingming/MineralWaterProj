@@ -16,11 +16,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/gps_mark"
+
+            <!--<ImageButton
+                android:id="@+id/testButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/gps_mark"
+                android:background="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 android:layout_marginTop="90dp"
@@ -30,14 +32,14 @@
                 android:id="@+id/find_gps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="92dp"
                 android:fontFamily="@font/maruburisemibold"
                 android:text="내 위치 찾기"
                 android:textColor="#000000"
                 android:textSize="14dp"
-                app:layout_constraintStart_toEndOf="@+id/gps_mark"
+                app:layout_constraintStart_toEndOf="@+id/testButton"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                android:layout_marginTop="92dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"/>-->
 
             <TextView
                 android:id="@+id/text_GPS"
@@ -64,6 +66,18 @@
                 android:textSize="15dp"
                 android:layout_marginStart="20dp"/>
 
+            <Button
+                android:id="@+id/loc_button"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="110dp"
+                android:fontFamily="@font/jua"
+                android:text="내 위치 설정"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                android:layout_marginEnd="20dp"/>
+
             <TextView
                 android:id="@+id/GPS_info"
                 android:layout_width="wrap_content"
@@ -74,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_GPS"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="20dp"/>
 
             <ImageView
                 android:id="@+id/imageView4"
