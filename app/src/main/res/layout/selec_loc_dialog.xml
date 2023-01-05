@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="250dp"
-    android:layout_height="400dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/notice_loc_dialog"
@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/maruburisemibold"
         android:text="지역을 선택하세요"
+        android:textSize="20dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +23,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/maruburisemibold"
         android:text="선택한 지역에서 제조된 제품만 추천받을 수 있어요"
-        android:textSize="10dp"
+        android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notice_loc_dialog"
-        android:layout_marginTop="6dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:id="@+id/notice3"
@@ -34,12 +37,94 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/maruburisemibold"
         android:text="지역을 선택하지 않으면 전체 결과를 볼 수 있어요"
-        android:textSize="10dp"
+        android:textSize="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notice2"
         android:layout_marginTop="3dp"/>
 
+    <RadioGroup
+        android:id="@+id/loc_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checkedButton="@id/loc_radio1"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notice3"
+        android:layout_marginBottom="30dp">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/radio_linear1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/loc_radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="선택 안 함" />
+
+                <RadioButton
+                    android:id="@+id/loc_radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="경기도" />
+
+                <RadioButton
+                    android:id="@+id/loc_radio3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="강원도" />
+
+                <RadioButton
+                    android:id="@+id/loc_radio4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="경상도" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/radio_linear2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/radio_linear1">
+
+                <RadioButton
+                    android:id="@+id/loc_radio5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="충청도" />
+
+                <RadioButton
+                    android:id="@+id/loc_radio6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="전라도" />
+
+                <RadioButton
+                    android:id="@+id/loc_radio7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/maruburisemibold"
+                    android:text="제주도" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
