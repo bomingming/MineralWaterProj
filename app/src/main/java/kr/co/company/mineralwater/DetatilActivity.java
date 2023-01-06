@@ -53,9 +53,6 @@ public class DetatilActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         water_name.setText(intent.getStringExtra("값 테스트"));
-        //s = homeFragment.selectName;
-        //Log.e("타입 확인", homeFragment.selectName.getClass().getName());
-        //Log.e("값 받아와졌는지 확인", s);
         adapter = new HomeAdapter(searchList);
 
         new Thread(){
