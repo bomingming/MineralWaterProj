@@ -186,21 +186,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 locDialogFragment.setArguments(args); // 데이터를 전달
                 locDialogFragment.show(getActivity().getSupportFragmentManager(),"tag");
                 getFragmentManager().executePendingTransactions(); // Dialog가 활성화되지 않은 상태이므로 getDialog()를 하기 위해 리스너 등록 전에 넣어주어야 하는 코드
-                Button select_btn = (Button)locDialogFragment.getDialog().findViewById(R.id.select_btn);
+                Button select_btn = (Button)locDialogFragment.getDialog().findViewById(R.id.apply_btn);
                 select_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //Log.e("버튼?","눌림");
                         locDialogFragment.dismiss();
+                        //myGPS_text.setText(locDialogFragment.select_result);
                     }
                 });
-                // Dismiss 발생 시 이벤트
+                /*// Dismiss 발생 시 이벤트
                 locDialogFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface) {
 
                     }
-                });
+                });*/
 
                 break;
         }

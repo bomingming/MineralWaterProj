@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +25,8 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
     private Fragment fragment;
     private RadioGroup loc_group;
     private RadioButton radioButton;
-    public String select_loc;
+    public String select_result;
+    private HomeFragment homeFragment;
 
     public LocDialogFragment(){
     }
@@ -35,57 +37,28 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
         Bundle args = getArguments();
         String value = args.getString("key");
 
-        /*rep_group = (RadioGroup) view.findViewById(R.id.rep_group);
-        loc_group1 = (RadioGroup) view.findViewById(R.id.loc_group1);
-        loc_group2 = (RadioGroup) view.findViewById(R.id.loc_group2);
-
-        int rb = ((RadioGroup)rep_group.findViewById(R.id.rep_group)).getCheckedRadioButtonId();
-
-        switch (rb){
-            case R.id.loc_group1:
-                loc_group2.clearCheck();
-
-                *//*if(checked){
-                    loc_group2.clearCheck();
-                }*//*
-            case R.id.loc_group2:
-                loc_group1.clearCheck();
-        }*/
         loc_group = (RadioGroup) view.findViewById(R.id.loc_group);
         //radioButton = (RadioButton) view.findViewById(loc_group.getCheckedRadioButtonId());
         //Log.e("변수값 확인", radioButton.toString());
         //int rb = ((RadioGroup)loc_group.findViewById(R.id.loc_group)).getCheckedRadioButtonId();
         //Log.e("변수값 확인", Integer.toString(rb)); // 2131296801 ????? ID 인가?
 
-        select_loc = "초기값";
-
-        //Log.e("R.id 값 확인", String.valueOf(R.id.loc_radio1));
+        select_result = "";
 
         Button select_loc_btn = (Button)view.findViewById(R.id.select_loc_btn);
         select_loc_btn.setOnClickListener(this);
-        /*select_loc_btn.setOnClickListener(new View.OnClickListener() {
+
+        /*Button apply_btn = (Button) view.findViewById(R.id.apply_btn);
+        apply_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("선택 버튼 눌렸는지 확인", "눌러졌음");
-                switch (rb){
-                    case R.id.loc_radio1:
-                        select_loc = "선택 안 함";
-                        break;
-                    case R.id.loc_radio2:
-                        select_loc = "경기도";
-                        break;
-                    case R.id.loc_radio3:
-                        select_loc = "강원도";
-                        break;
-
-                }
-                Log.e("switch 값 변하는지 확인", select_loc);
+                DialogFragment dialogFragment = (DialogFragment) fragment;
+                dialogFragment.dismiss();
             }
-        });*/
-
-
-        //String select_loc = radioButton.getText().toString();
-        //Log.e("라디오 버튼 값", select_loc);
+        });
+*/
+        // 화면 터치 시 꺼짐 막기
+        setCancelable(false);
 
         return view;
     }
@@ -95,28 +68,30 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
         int rb = ((RadioGroup)loc_group.findViewById(R.id.loc_group)).getCheckedRadioButtonId();
         switch (rb){
             case R.id.loc_radio1:
-                select_loc = "선택 안 함";
+                select_result = "선택 안 함";
                 break;
             case R.id.loc_radio2:
-                select_loc = "경기도";
+                select_result = "경기도";
                 break;
             case R.id.loc_radio3:
-                select_loc = "강원도";
+                select_result = "강원도";
                 break;
             case R.id.loc_radio4:
-                select_loc = "경상도";
+                select_result = "경상도";
                 break;
             case R.id.loc_radio5:
-                select_loc = "충청도";
+                select_result = "충청도";
                 break;
             case R.id.loc_radio6:
-                select_loc = "전라도";
+                select_result = "전라도";
                 break;
             case R.id.loc_radio7:
-                select_loc = "제주도";
+                select_result = "제주도";
                 break;
         }
-    Log.e("선택값 확인", select_loc);
+
+        // 선택값 전달 시도
+        //String select_result =
 
     }
 

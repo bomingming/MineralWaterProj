@@ -48,10 +48,11 @@
         android:id="@+id/loc_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notice3"
-        android:layout_marginTop="20dp">
+        android:checkedButton="@id/loc_radio1">
 
         <RadioButton
             android:id="@+id/loc_radio1"
@@ -106,23 +107,29 @@
 
 
     <Button
-        android:id="@+id/select_btn"
+        android:id="@+id/apply_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:fontFamily="@font/maruburisemibold"
-        android:text="선택"
+        android:text="적용"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loc_group"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintStart_toEndOf="@+id/select_loc_btn"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"/>
 
     <Button
         android:id="@+id/select_loc_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="테스트"/>
+        android:fontFamily="@font/maruburisemibold"
+        android:text="지역 선택"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loc_group"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="60dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
