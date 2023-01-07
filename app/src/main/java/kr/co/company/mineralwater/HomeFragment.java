@@ -168,6 +168,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
         });
 
+        myGPS_text = (TextView) v.findViewById(R.id.myGPS_text);
+
         return v;
     }
 
@@ -185,22 +187,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 LocDialogFragment locDialogFragment = new LocDialogFragment();
                 locDialogFragment.setArguments(args); // 데이터를 전달
                 locDialogFragment.show(getActivity().getSupportFragmentManager(),"tag");
+
                 getFragmentManager().executePendingTransactions(); // Dialog가 활성화되지 않은 상태이므로 getDialog()를 하기 위해 리스너 등록 전에 넣어주어야 하는 코드
-                Button select_btn = (Button)locDialogFragment.getDialog().findViewById(R.id.apply_btn);
-                select_btn.setOnClickListener(new View.OnClickListener() {
+                Button apply_btn = (Button)locDialogFragment.getDialog().findViewById(R.id.apply_btn);
+                apply_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        // 다이얼로그 종료
                         locDialogFragment.dismiss();
-                        //myGPS_text.setText(locDialogFragment.select_result);
                     }
                 });
-                /*// Dismiss 발생 시 이벤트
-                locDialogFragment.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
 
+                locDialogFragment.setDialogResult(new LocDialogFragment.OnMyDialogResult() {
+                    @Override
+                    public void finish(String result) {
+                        //
+                        myGPS_text.setText(result);
                     }
-                });*/
+                });
 
                 break;
         }

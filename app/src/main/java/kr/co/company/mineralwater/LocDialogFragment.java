@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -21,12 +23,11 @@ import androidx.fragment.app.Fragment;
 import org.jetbrains.annotations.Nullable;
 
 public class LocDialogFragment extends DialogFragment implements View.OnClickListener{
+    OnMyDialogResult myDialogResult;
 
     private Fragment fragment;
     private RadioGroup loc_group;
-    private RadioButton radioButton;
     public String select_result;
-    private HomeFragment homeFragment;
 
     public LocDialogFragment(){
     }
@@ -38,25 +39,12 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
         String value = args.getString("key");
 
         loc_group = (RadioGroup) view.findViewById(R.id.loc_group);
-        //radioButton = (RadioButton) view.findViewById(loc_group.getCheckedRadioButtonId());
-        //Log.e("변수값 확인", radioButton.toString());
-        //int rb = ((RadioGroup)loc_group.findViewById(R.id.loc_group)).getCheckedRadioButtonId();
-        //Log.e("변수값 확인", Integer.toString(rb)); // 2131296801 ????? ID 인가?
 
         select_result = "";
 
         Button select_loc_btn = (Button)view.findViewById(R.id.select_loc_btn);
         select_loc_btn.setOnClickListener(this);
 
-        /*Button apply_btn = (Button) view.findViewById(R.id.apply_btn);
-        apply_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment dialogFragment = (DialogFragment) fragment;
-                dialogFragment.dismiss();
-            }
-        });
-*/
         // 화면 터치 시 꺼짐 막기
         setCancelable(false);
 
@@ -90,20 +78,17 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
                 break;
         }
 
-        // 선택값 전달 시도
-        //String select_result =
-
+        if(myDialogResult != null){
+            myDialogResult.finish(select_result);
+        }
     }
 
-    // DialogFragment
-    /*@Override
-    public void onDismiss(DialogInterface dialog){
-        super.onDismiss(dialog);
+    public void setDialogResult(OnMyDialogResult dialogResult){
+        myDialogResult = dialogResult;
+    }
 
-        final Activity activity = getActivity();
-        if(activity instanceof DialogInterface.OnDismissListener){
-            ((DialogInterface.OnDismissListener)activity).onDismiss(dialog);
-        }
-    }*/
+    public interface OnMyDialogResult{
+        void finish(String result);
+    }
 
 }
