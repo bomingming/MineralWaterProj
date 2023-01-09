@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private String selectData; // 선택한 항목
     public String selectName; // 선택한 항목의 제품명
-    //public String selectSize; // 선택한 항목의 제품 용량
+    public String selectSize; // 선택한 항목의 제품 용량
     public String testText; // 임의로 만든 테스트용 문자열
 
 
@@ -178,12 +178,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             public void onItemClick(View v, int position) {
                 selectData = searchList.get(position); // "제품명 제품용량"
                 String[] splitStr = selectData.split(" "); // 공백을 기준으로 문자열 나누기
-                selectName = splitStr[0]; // 제품명
-                String selectSize = splitStr[1]; // 제품 용량
-                returnWater();
+                selectName = splitStr[0]; // 제품명 할당
+                selectSize = splitStr[1]; // 제품 용량 할당
+                returnName(); // 제품명 반환
+                returnSize(); // 제품 용량 반환
+
+                new Thread(){
+                    @Override
+                    public void run(){
+                        searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/5.php"));
+                        getActivity().runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                adapter.setSearchList(searchList);
+                            }
+                        });
+                    }
+                }.start();
 
                 Intent intent = new Intent(v.getContext(), DetatilActivity.class);
-                intent.putExtra("값 테스트", selectName);
+                intent.putExtra("제품명", selectName);
+                intent.putExtra("제품용량", selectSize);
 
                 v.getContext().startActivity(intent);
             }
@@ -192,8 +207,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         return v;
     }
 
-    public String returnWater(){
+    // 제품명을 반환하는 메소드
+    public String returnName(){
         return selectName;
+    }
+
+    // 제품용량을 반환하는 메소드
+    public String returnSize(){
+        return selectSize;
     }
 
     @Override

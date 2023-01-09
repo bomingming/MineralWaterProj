@@ -63,19 +63,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                         if(mListener != null){
                             mListener.onItemClick(view, pos);
                         }
-                        /*String test = homeFragment.returnWater();
-                        Log.e("값 확인", test);*/
-
-                        //String name = homeFragment.;
-                        //Log.e("제품 이름이 나오나 테스트", homeFragment.selectName);
-                        /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                        intent.putExtra("값 테스트", "흠");
-
-                        view.getContext().startActivity(intent);*/
                     }
 
-                    /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                    view.getContext().startActivity(intent);*/
                 }
             });
         }

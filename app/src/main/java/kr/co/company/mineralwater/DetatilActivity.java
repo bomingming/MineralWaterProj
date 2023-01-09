@@ -27,6 +27,7 @@ public class DetatilActivity extends AppCompatActivity {
     public String selectName;
 
     private TextView water_name;
+    private TextView water_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -34,6 +35,7 @@ public class DetatilActivity extends AppCompatActivity {
         setContentView(R.layout.detail_main);
 
         water_name = findViewById(R.id.water_name);
+        water_size = findViewById(R.id.water_size);
 
         // 액션바 타이틀 수정
         ActionBar ac = getSupportActionBar();
@@ -70,7 +72,8 @@ public class DetatilActivity extends AppCompatActivity {
 
         //homeFragment.
         Intent intent = getIntent();
-        water_name.setText(intent.getStringExtra("값 테스트"));
+        water_name.setText(intent.getStringExtra("제품명"));
+        water_size.setText(intent.getStringExtra("제품용량"));
         adapter = new HomeAdapter(searchList);
 
 
