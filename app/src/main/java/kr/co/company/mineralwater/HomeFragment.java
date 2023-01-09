@@ -79,6 +79,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
+        myGPS_text = (TextView) v.findViewById(R.id.myGPS_text);
 
         new Thread(){
             @Override
@@ -103,7 +104,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     new Thread(){
                         @Override
                         public void run(){
-                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                            String location = ""; // 지역 필터링 파라미터의 초기값
+                            if(myGPS_text.getText().toString().equals("선택 안 함")){
+                                location = "";
+                            }else{
+                                location = myGPS_text.getText().toString();
+                            }
+                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+location));
                             getActivity().runOnUiThread(new Runnable(){
                                 @Override
                                 public void run(){
@@ -116,7 +123,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     new Thread(){
                         @Override
                         public void run(){
-                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-2.php"));
+                            String location = ""; // 지역 필터링 파라미터의 초기값
+                            if(myGPS_text.getText().toString().equals("선택 안 함")){
+                                location = "";
+                            }else{
+                                location = myGPS_text.getText().toString();
+                            }
+                            searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-2.php?area="+location));
                             getActivity().runOnUiThread(new Runnable(){
                                 @Override
                                 public void run(){
@@ -168,7 +181,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        myGPS_text = (TextView) v.findViewById(R.id.myGPS_text);
+
 
         return v;
     }
@@ -203,6 +216,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     public void finish(String result) {
                         //
                         myGPS_text.setText(result);
+                        new Thread(){
+                            @Override
+                            public void run(){
+                                searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
+                                getActivity().runOnUiThread(new Runnable(){
+                                    @Override
+                                    public void run(){
+                                        adapter.setSearchList(searchList);
+                                    }
+                                });
+                            }
+                        }.start();
                     }
                 });
 
@@ -210,5 +235,3 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         }
     }
 }
-
-
