@@ -214,12 +214,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 locDialogFragment.setDialogResult(new LocDialogFragment.OnMyDialogResult() {
                     @Override
                     public void finish(String result) {
-                        //
                         myGPS_text.setText(result);
                         new Thread(){
                             @Override
                             public void run(){
-                                searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
+                                if(result.equals("선택 안 함")){
+                                    searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                                }else{
+                                    searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
+                                }
+
                                 getActivity().runOnUiThread(new Runnable(){
                                     @Override
                                     public void run(){
