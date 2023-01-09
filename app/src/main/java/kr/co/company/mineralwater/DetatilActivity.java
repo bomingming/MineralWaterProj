@@ -24,6 +24,8 @@ public class DetatilActivity extends AppCompatActivity {
     public HomeFragment homeFragment;
     public String s;
 
+    public String selectName;
+
     private TextView water_name;
 
     @Override
@@ -51,15 +53,11 @@ public class DetatilActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        water_name.setText(intent.getStringExtra("값 테스트"));
-        adapter = new HomeAdapter(searchList);
-
-        new Thread(){
+        /*new Thread(){
             @Override
             public void run(){
                 //searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
-                String testStr = adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php");
+                //String testStr = adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php");
 
                 (DetatilActivity.this).runOnUiThread(new Runnable(){ // Activity 형식에 맞게 DetatilActivity.this로 수정
                     @Override
@@ -68,7 +66,14 @@ public class DetatilActivity extends AppCompatActivity {
                     }
                 });
             }
-        }.start();
+        }.start();*/
+
+        //homeFragment.
+        Intent intent = getIntent();
+        water_name.setText(intent.getStringExtra("값 테스트"));
+        adapter = new HomeAdapter(searchList);
+
+
     }
 
     // 커스텀 다이얼로그 디자인하는 함수

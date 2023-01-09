@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -64,7 +65,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private String selectData; // 선택한 항목
     public String selectName; // 선택한 항목의 제품명
-    public String selectSize; // 선택한 항목의 제품 용량
+    //public String selectSize; // 선택한 항목의 제품 용량
+    public String testText; // 임의로 만든 테스트용 문자열
 
 
     @Override
@@ -177,13 +179,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 selectData = searchList.get(position); // "제품명 제품용량"
                 String[] splitStr = selectData.split(" "); // 공백을 기준으로 문자열 나누기
                 selectName = splitStr[0]; // 제품명
-                selectSize = splitStr[1]; // 제품용량
+                String selectSize = splitStr[1]; // 제품 용량
+                returnWater();
+
+                Intent intent = new Intent(v.getContext(), DetatilActivity.class);
+                intent.putExtra("값 테스트", selectName);
+
+                v.getContext().startActivity(intent);
             }
         });
 
-
-
         return v;
+    }
+
+    public String returnWater(){
+        return selectName;
     }
 
     @Override
@@ -223,7 +233,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                 }else{
                                     searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
                                 }
-
                                 getActivity().runOnUiThread(new Runnable(){
                                     @Override
                                     public void run(){
@@ -234,7 +243,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         }.start();
                     }
                 });
-
                 break;
         }
     }

@@ -41,15 +41,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         HomeAdapter adapter;
         private TextView textView;
         private ImageView imageView;
+        public HomeFragment homeFragment;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.name_text_slide);
             imageView = itemView.findViewById(R.id.water_image_slide);
 
+            homeFragment = new HomeFragment(); // homeFragment 객체 선언
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     // 클릭된 아이템의 위치 가져오기
                     int pos = getAdapterPosition();
                     if(pos != RecyclerView.NO_POSITION){
@@ -59,10 +63,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                         if(mListener != null){
                             mListener.onItemClick(view, pos);
                         }
+                        /*String test = homeFragment.returnWater();
+                        Log.e("값 확인", test);*/
 
-                        Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                        intent.putExtra("값 테스트", "메인 화면과 연결 성공");
-                        view.getContext().startActivity(intent);
+                        //String name = homeFragment.;
+                        //Log.e("제품 이름이 나오나 테스트", homeFragment.selectName);
+                        /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                        intent.putExtra("값 테스트", "흠");
+
+                        view.getContext().startActivity(intent);*/
                     }
 
                     /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
@@ -76,6 +85,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             return textView;
         }*/
     }
+
+
 
     // 리스너 객체 참조를 저장하는 변수
     private OnItemClickListener mListener = null;
