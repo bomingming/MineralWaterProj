@@ -186,11 +186,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 new Thread(){
                     @Override
                     public void run(){
-                        searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/5.php"));
+                        selectSize = selectSize.replaceAll("[^0-d]","");
+
+                        // ArrayList<String> test = adapter.JSONParseForName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name=가야산천년수&capacity=330"));
+                        // ArrayList<String> test2 = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
+                        // adapter.JSONParseForDetail(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name=가야산천년수&capacity=330"));
+                        // String.format("https://wwater.xyz:4443/rjh/4.php?capacity=%d", 330)
+
+
                         getActivity().runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
-                                adapter.setSearchList(searchList);
+                                //adapter.setSearchList(searchList);
                             }
                         });
                     }

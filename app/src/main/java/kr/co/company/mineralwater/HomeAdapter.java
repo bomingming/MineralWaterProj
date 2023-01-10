@@ -64,7 +64,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                             mListener.onItemClick(view, pos);
                         }
                     }
-
                 }
             });
         }
@@ -162,5 +161,70 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             e.printStackTrace();
         }
         return DataArray;
+    }
+
+    // 상세 정보를 위한 메소드
+    // 제조 공장 파싱
+    ArrayList<String> JSONParseForFCName(String jsonStr){
+        ArrayList<String> FCNameArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String FCName = jsonObject.getString("factory_name"); // 제조 공장 문자열로 파싱
+                FCNameArray.add(FCName);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return FCNameArray;
+    }
+
+    // 공장 주소 파싱
+    ArrayList<String> JSONParseForLoc(String jsonStr){
+        ArrayList<String> locationArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String location = jsonObject.getString("location"); // 공장 주소 문자열로 파싱
+                locationArray.add(location);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return locationArray;
+    }
+    
+    // 가격 파싱
+    ArrayList<String> JSONParseForPrice(String jsonStr){
+        ArrayList<String> priceArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String price = jsonObject.getString("price"); // 가격 문자열로 파싱
+                priceArray.add(price);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return priceArray;
+    }
+    
+    // 경고 단계 파싱
+    ArrayList<String> JSONParseForWarn(String jsonStr){
+        ArrayList<String> warnArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String warning = jsonObject.getString("price"); // 경고 단계 문자열로 파싱
+                warnArray.add(warning);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return warnArray;
     }
 }
