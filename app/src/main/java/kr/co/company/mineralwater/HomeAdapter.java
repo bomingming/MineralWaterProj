@@ -197,19 +197,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     }
     
     // 가격 파싱
-    ArrayList<String> JSONParseForPrice(String jsonStr){
+    String JSONParseForPrice(String jsonStr){
         ArrayList<String> priceArray = new ArrayList<>();
+        String price = new String();
         try{
             JSONArray jsonArray = new JSONArray(jsonStr);
-            for(int i=0; i<jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String price = jsonObject.getString("price"); // 가격 문자열로 파싱
-                priceArray.add(price);
-            }
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            price = jsonObject.getString("price");
         }catch (JSONException e){
             e.printStackTrace();
         }
-        return priceArray;
+        return price;
     }
     
     // 경고 단계 파싱
@@ -219,7 +217,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             JSONArray jsonArray = new JSONArray(jsonStr);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String warning = jsonObject.getString("price"); // 경고 단계 문자열로 파싱
+                String warning = jsonObject.getString("warning_stage"); // 경고 단계 문자열로 파싱
                 warnArray.add(warning);
             }
         }catch (JSONException e){

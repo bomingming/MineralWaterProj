@@ -28,6 +28,7 @@ public class DetatilActivity extends AppCompatActivity {
 
     private TextView water_name;
     private TextView water_size;
+    private TextView water_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -36,6 +37,7 @@ public class DetatilActivity extends AppCompatActivity {
 
         water_name = findViewById(R.id.water_name);
         water_size = findViewById(R.id.water_size);
+        water_price = findViewById(R.id.water_price);
 
         // 액션바 타이틀 수정
         ActionBar ac = getSupportActionBar();
@@ -55,25 +57,11 @@ public class DetatilActivity extends AppCompatActivity {
             }
         });
 
-        /*new Thread(){
-            @Override
-            public void run(){
-                //searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
-                //String testStr = adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php");
-
-                (DetatilActivity.this).runOnUiThread(new Runnable(){ // Activity 형식에 맞게 DetatilActivity.this로 수정
-                    @Override
-                    public void run(){
-                        //adapter.setSearchList(searchList);
-                    }
-                });
-            }
-        }.start();*/
-
         //homeFragment.
         Intent intent = getIntent();
         water_name.setText(intent.getStringExtra("제품명"));
         water_size.setText(intent.getStringExtra("제품용량"));
+        water_price.setText(intent.getStringExtra("가격")+"원");
         adapter = new HomeAdapter(searchList);
 
     }
