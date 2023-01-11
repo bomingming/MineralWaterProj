@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -65,7 +65,7 @@
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보 (공장 주소 등)"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_price"
+            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
             android:textSize="20dp"/>
 
         <TextView
@@ -78,16 +78,16 @@
             android:text="경고 단계"
             android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@+id/mark_image"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info" />
+            app:layout_constraintTop_toBottomOf="@+id/water_price" />
 
         <TextView
             android:id="@+id/water_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
-            android:text="경고 내역\n이얍이얍\n어쩌구저쩌구"
+            android:text="경고 내역"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
             android:layout_marginTop="10dp"
             android:layout_marginStart="50dp"
             android:textSize="20dp"/>
@@ -97,10 +97,185 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/water_warning"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
-            app:srcCompat="@drawable/mark"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_price"
+            app:srcCompat="@drawable/mark"
+            android:layout_marginTop="10dp"/>
+
+        <!--공장이 두 개 이상인 경우 값이 변하는 View-->
+        <TextView
+            android:id="@+id/water_detail_info2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보2 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역2"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--3-->
+        <TextView
+            android:id="@+id/water_detail_info3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보3 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning2"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역3"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--4-->
+        <TextView
+            android:id="@+id/water_detail_info4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보4 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning3"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역4"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--5-->
+        <TextView
+            android:id="@+id/water_detail_info5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보5 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning4"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역5"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--6-->
+        <TextView
+            android:id="@+id/water_detail_info6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보6 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning5"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역6"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--7-->
+        <TextView
+            android:id="@+id/water_detail_info7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보7 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning6"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역7"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <!--8-->
+        <TextView
+            android:id="@+id/water_detail_info8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="상세 정보8 (공장 주소 등)"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning7"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/water_warning8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/maruburisemibold"
+            android:text="경고 내역8"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

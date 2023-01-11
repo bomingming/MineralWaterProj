@@ -76,7 +76,6 @@ public class DetatilActivity extends AppCompatActivity {
         water_size.setText(intent.getStringExtra("제품용량"));
         adapter = new HomeAdapter(searchList);
 
-
     }
 
     // 커스텀 다이얼로그 디자인하는 함수

@@ -66,7 +66,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private String selectData; // 선택한 항목
     public String selectName; // 선택한 항목의 제품명
     public String selectSize; // 선택한 항목의 제품 용량
-    public String testText; // 임의로 만든 테스트용 문자열
+    
+    // 상세 정보 데이터를 담을 변수들
+    public ArrayList<String> locArr;
+    public String location = "";
+    public String factory_name = "";
+    public String warning_stage = "";
+    public String price = "";
 
 
     @Override
@@ -176,6 +182,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         adapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
+
                 selectData = searchList.get(position); // "제품명 제품용량"
                 String[] splitStr = selectData.split(" "); // 공백을 기준으로 문자열 나누기
                 selectName = splitStr[0]; // 제품명 할당
@@ -187,13 +194,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void run(){
                         selectSize = selectSize.replaceAll("[^0-d]","");
+                        locArr = adapter.JSONParseForLoc(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
+                        for(int i=0; i<locArr.size(); i++){
 
-                        // ArrayList<String> test = adapter.JSONParseForName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name=가야산천년수&capacity=330"));
-                        // ArrayList<String> test2 = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
-                        // adapter.JSONParseForDetail(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name=가야산천년수&capacity=330"));
-                        // String.format("https://wwater.xyz:4443/rjh/4.php?capacity=%d", 330)
-
-
+                        }
+                        /*factory_name = adapter.JSONParseForFCName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
+                        warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
+                        price = adapter.JSONParseForPrice(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));*/
                         getActivity().runOnUiThread(new Runnable(){
                             @Override
                             public void run(){
