@@ -31,14 +31,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     private ArrayList<String> localDataSet;
 
-    private String selectData; // 선택한 항목
-    public String selectName; // 선택한 항목의 제품명
-    public String selectSize; // 선택한 항목의 제품 용량
-
     public class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
 
         public ArrayList<String> searchList = new ArrayList<>();
-        HomeAdapter adapter;
         private TextView textView;
         private ImageView imageView;
         public HomeFragment homeFragment;
@@ -73,8 +68,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             return textView;
         }*/
     }
-
-
 
     // 리스너 객체 참조를 저장하는 변수
     private OnItemClickListener mListener = null;

@@ -73,7 +73,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public ArrayList<String> warning_stage; // 경고 단계
     public String price = ""; // 가격
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_menu1, container, false);

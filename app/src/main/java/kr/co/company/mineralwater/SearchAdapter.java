@@ -25,21 +25,34 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     private ArrayList<String> localDataSet;
 
     // 뷰 홀더 클래스
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
         private ImageView imageView;
+        private SearchFragment searchFragment;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_search_list);
             imageView = itemView.findViewById(R.id.water_image);
 
+            searchFragment = new SearchFragment();
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), DetatilActivity.class);
+                    /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
                     intent.putExtra("값 테스트", "검색창과 연결 성공");
-                    view.getContext().startActivity(intent);
+                    view.getContext().startActivity(intent);*/
+                    // 클릭된 아이템의 위치 가져오기
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        // 클릭 이벤트
+
+                        // 리스너 객체의 메소드 호출
+                        if(mListener != null){
+                            mListener.onItemClick(view, pos);
+                        }
+                    }
                 }
             });
         }
@@ -47,6 +60,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             return textView;
         }
 
+    }
+
+    // 리스너 객체 참조를 저장하는 변수
+    private OnItemClickListener mListener = null;
+
+    // OnItemClickListener 리스너 객체 참조를 Adapter에 전달하는 메소드
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
     }
 
     // 생성자(생성자를 통해서 데이터 전달 받음)
@@ -124,5 +149,67 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             e.printStackTrace();
         }
         return DataArray;
+    }
+    // 상세 정보를 위한 메소드
+    // 제조 공장 파싱
+    ArrayList<String> JSONParseForFCName(String jsonStr){
+        ArrayList<String> FCNameArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String FCName = jsonObject.getString("factory_name"); // 제조 공장 문자열로 파싱
+                FCNameArray.add(FCName);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return FCNameArray;
+    }
+
+    // 공장 주소 파싱
+    ArrayList<String> JSONParseForLoc(String jsonStr){
+        ArrayList<String> locationArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String location = jsonObject.getString("location"); // 공장 주소 문자열로 파싱
+                locationArray.add(location);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return locationArray;
+    }
+
+    // 가격 파싱
+    String JSONParseForPrice(String jsonStr){
+        ArrayList<String> priceArray = new ArrayList<>();
+        String price = new String();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            price = jsonObject.getString("price");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return price;
+    }
+
+    // 경고 단계 파싱
+    ArrayList<String> JSONParseForWarn(String jsonStr){
+        ArrayList<String> warnArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String warning = jsonObject.getString("warning_stage"); // 경고 단계 문자열로 파싱
+                warnArray.add(warning);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return warnArray;
     }
 }
