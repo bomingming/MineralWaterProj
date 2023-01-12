@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -34,14 +36,23 @@ public class DetatilActivity extends AppCompatActivity {
     private TextView water_detail_info6;
     private TextView water_detail_info7;
     private TextView water_detail_info8;
-    
-    private String[] infoArr = new String[8]; // 공장 주소 담을 문자열 배열
-    private String[] fcArr = new String[8]; // 공장 이름 담을 문자열 배열
+
+    private String[] infoArr = {"", "", "", "","", "", "", ""}; // 공장 주소 담을 문자열 배열
+    private String[] fcArr = {"", "", "", "","", "", "", ""}; // 공장 이름 담을 문자열 배열
+
+    private ImageView mark_image; // 위험 단계 마크
+    private ImageView mark_image2; // 보통 단계 마크
+    private ImageView mark_image3; // 안전 단계 마크
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_main);
+
+        // 경고 단계 마크 View 객체 연결
+        mark_image = findViewById(R.id.mark_image);
+        mark_image2 = findViewById(R.id.mark_image2);
+        mark_image3 = findViewById(R.id.mark_image3);
 
         // 액션바 타이틀 수정
         ActionBar ac = getSupportActionBar();
@@ -53,7 +64,23 @@ public class DetatilActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.popup_warning); // xml 파일과 연동
 
         // 버튼 : 커스텀 다이얼로그 띄우기
-        findViewById(R.id.mark_image).setOnClickListener(new View.OnClickListener(){
+        mark_image.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                showMyDialog();
+            }
+        });
+
+        mark_image2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                showMyDialog();
+            }
+        });
+
+        mark_image3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
@@ -88,21 +115,35 @@ public class DetatilActivity extends AppCompatActivity {
             fcArr[i] = factory_name.get(i);
         }
 
-        water_name.setText(intent.getStringExtra("제품명"));
-        water_size.setText(intent.getStringExtra("제품용량"));
-        water_price.setText(intent.getStringExtra("가격")+"원");
+        ArrayList<String> warning_stage = intent.getStringArrayListExtra("경고 단계");
+        int max = 0;
+        for(int i=0; i<warning_stage.size(); i++){
+            if(Integer.parseInt(warning_stage.get(i))>max){
+                max = Integer.parseInt(warning_stage.get(i));
+            }
+        }
+        if (max == 0){
+            mark_image3.setVisibility(View.VISIBLE);
+        }else if(max==1){
+            mark_image2.setVisibility(View.VISIBLE);
+        }else{
+            mark_image.setVisibility(View.VISIBLE);
+        }
 
-        water_detail_info.setText(fcArr[0]+"\n("+infoArr[0]+")");
-        water_detail_info2.setText(infoArr[1]);
-        water_detail_info3.setText(infoArr[2]);
-        water_detail_info4.setText(infoArr[3]);
-        water_detail_info5.setText(infoArr[4]);
-        water_detail_info6.setText(infoArr[5]);
-        water_detail_info7.setText(infoArr[6]);
-        water_detail_info8.setText(infoArr[7]);
+        water_name.setText("제품명 : " +intent.getStringExtra("제품명"));
+        water_size.setText("용량 : " +intent.getStringExtra("제품용량"));
+        water_price.setText("가격 : "+intent.getStringExtra("가격")+"원");
+
+        water_detail_info.setText(fcArr[0]+"\n"+infoArr[0]+"");
+        water_detail_info2.setText(fcArr[1]+"\n"+infoArr[1]+"");
+        water_detail_info3.setText(fcArr[2]+"\n"+infoArr[2]+"");
+        water_detail_info4.setText(fcArr[3]+"\n"+infoArr[3]+"");
+        water_detail_info5.setText(fcArr[4]+"\n"+infoArr[4]+"");
+        water_detail_info6.setText(fcArr[5]+"\n"+infoArr[5]+"");
+        water_detail_info7.setText(fcArr[6]+"\n"+infoArr[6]+"");
+        water_detail_info8.setText(fcArr[7]+"\n"+infoArr[7]+"");
 
         adapter = new HomeAdapter(searchList);
-
     }
 
     // 커스텀 다이얼로그 디자인하는 함수

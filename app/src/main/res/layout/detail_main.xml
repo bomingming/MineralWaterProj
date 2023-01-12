@@ -60,12 +60,12 @@
             android:id="@+id/water_dangerous_degree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
-            android:text="경고 단계"
+            android:text="경고 단계 : "
             android:textSize="20dp"
-            app:layout_constraintStart_toEndOf="@+id/mark_image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/water_price" />
 
         <ImageView
@@ -74,7 +74,7 @@
             android:layout_height="50dp"
             android:src="@drawable/logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mark_image"
+            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
             android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"/>
 
@@ -118,11 +118,29 @@
             android:id="@+id/mark_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
             app:layout_constraintTop_toBottomOf="@+id/water_price"
             app:srcCompat="@drawable/mark"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/mark_image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
+            app:layout_constraintTop_toBottomOf="@+id/water_price"
+            app:srcCompat="@drawable/middle_mark"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/mark_image3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
+            app:layout_constraintTop_toBottomOf="@+id/water_price"
+            app:srcCompat="@drawable/safe_mark"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
 
         <!--공장이 두 개 이상인 경우 값이 변하는 View-->
         <TextView

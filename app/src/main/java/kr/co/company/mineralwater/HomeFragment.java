@@ -68,10 +68,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public String selectSize; // 선택한 항목의 제품 용량
     
     // 상세 정보 데이터를 담을 변수들
-    public ArrayList<String> locArr;
-    public ArrayList<String> factory_name;
-    public String warning_stage = "";
-    public String price = "";
+    public ArrayList<String> locArr; // 공장 주소
+    public ArrayList<String> factory_name; // 공장 이름
+    public ArrayList<String> warning_stage; // 경고 단계
+    public String price = ""; // 가격
 
 
     @Override
@@ -198,12 +198,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         selectSize = selectSize.replaceAll("[^0-d]","");
                         locArr = adapter.JSONParseForLoc(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         factory_name = adapter.JSONParseForFCName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
-                        /*warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));*/
+                        warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         price = adapter.JSONParseForPrice(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         
                         intent.putExtra("가격", price);
                         intent.putExtra("지역 정보", locArr);
                         intent.putExtra("공장 이름", factory_name);
+                        intent.putExtra("경고 단계", warning_stage);
 
                         // 서버 연결을 위한 Thread 작업이 끝난 뒤 intent를 실행해야 변화된 값으로 setText를 할 수 있음
                         v.getContext().startActivity(intent);
