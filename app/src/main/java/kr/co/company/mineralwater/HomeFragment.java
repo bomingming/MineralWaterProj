@@ -207,12 +207,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
                         // 서버 연결을 위한 Thread 작업이 끝난 뒤 intent를 실행해야 변화된 값으로 setText를 할 수 있음
                         v.getContext().startActivity(intent);
-                        getActivity().runOnUiThread(new Runnable(){
-                            @Override
-                            public void run(){
-                                //adapter.setSearchList(searchList);
-                            }
-                        });
                     }
                 }.start();
             }
