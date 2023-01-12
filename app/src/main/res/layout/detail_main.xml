@@ -58,15 +58,15 @@
 
         <TextView
             android:id="@+id/water_detail_info"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보 (공장 주소 등)"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
-            android:textSize="20dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree" />
 
         <TextView
             android:id="@+id/water_dangerous_degree"
@@ -82,7 +82,7 @@
 
         <TextView
             android:id="@+id/water_warning"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역"
@@ -105,7 +105,7 @@
         <!--공장이 두 개 이상인 경우 값이 변하는 View-->
         <TextView
             android:id="@+id/water_detail_info2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보2 (공장 주소 등)"
@@ -117,7 +117,7 @@
 
         <TextView
             android:id="@+id/water_warning2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역2"
@@ -130,7 +130,7 @@
         <!--3-->
         <TextView
             android:id="@+id/water_detail_info3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보3 (공장 주소 등)"
@@ -142,7 +142,7 @@
 
         <TextView
             android:id="@+id/water_warning3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역3"
@@ -155,7 +155,7 @@
         <!--4-->
         <TextView
             android:id="@+id/water_detail_info4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보4 (공장 주소 등)"
@@ -167,7 +167,7 @@
 
         <TextView
             android:id="@+id/water_warning4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역4"
@@ -180,7 +180,7 @@
         <!--5-->
         <TextView
             android:id="@+id/water_detail_info5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보5 (공장 주소 등)"
@@ -192,7 +192,7 @@
 
         <TextView
             android:id="@+id/water_warning5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역5"
@@ -205,7 +205,7 @@
         <!--6-->
         <TextView
             android:id="@+id/water_detail_info6"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보6 (공장 주소 등)"
@@ -217,7 +217,7 @@
 
         <TextView
             android:id="@+id/water_warning6"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역6"
@@ -230,7 +230,7 @@
         <!--7-->
         <TextView
             android:id="@+id/water_detail_info7"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보7 (공장 주소 등)"
@@ -242,7 +242,7 @@
 
         <TextView
             android:id="@+id/water_warning7"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역7"
@@ -255,7 +255,7 @@
         <!--8-->
         <TextView
             android:id="@+id/water_detail_info8"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보8 (공장 주소 등)"
@@ -267,7 +267,7 @@
 
         <TextView
             android:id="@+id/water_warning8"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="경고 내역8"

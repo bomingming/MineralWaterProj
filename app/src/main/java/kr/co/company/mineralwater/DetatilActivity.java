@@ -29,6 +29,14 @@ public class DetatilActivity extends AppCompatActivity {
     private TextView water_name;
     private TextView water_size;
     private TextView water_price;
+    private TextView water_detail_info;
+    private TextView water_detail_info2;
+    private TextView water_detail_info3;
+
+    private String info1 = "";
+    private String info2, info3;
+
+    private String[] infoArr = {info1, info2, info3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,6 +46,9 @@ public class DetatilActivity extends AppCompatActivity {
         water_name = findViewById(R.id.water_name);
         water_size = findViewById(R.id.water_size);
         water_price = findViewById(R.id.water_price);
+        water_detail_info = findViewById(R.id.water_detail_info);
+        water_detail_info2 = findViewById(R.id.water_detail_info2);
+        water_detail_info3 = findViewById(R.id.water_detail_info3);
 
         // 액션바 타이틀 수정
         ActionBar ac = getSupportActionBar();
@@ -59,9 +70,20 @@ public class DetatilActivity extends AppCompatActivity {
 
         //homeFragment.
         Intent intent = getIntent();
+
+        ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
+
+        for(int i=0; i<locArr.size(); i++){
+            infoArr[i] = locArr.get(i);
+        }
         water_name.setText(intent.getStringExtra("제품명"));
         water_size.setText(intent.getStringExtra("제품용량"));
         water_price.setText(intent.getStringExtra("가격")+"원");
+
+        water_detail_info.setText(infoArr[0]);
+        water_detail_info2.setText(infoArr[1]);
+        water_detail_info3.setText(infoArr[2]);
+
         adapter = new HomeAdapter(searchList);
 
     }
