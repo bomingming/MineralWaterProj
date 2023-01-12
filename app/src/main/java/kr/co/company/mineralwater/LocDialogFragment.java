@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -79,8 +80,11 @@ public class LocDialogFragment extends DialogFragment implements View.OnClickLis
         }
 
         if(myDialogResult != null){
+            // 지역 선택 시 토스트 메시지 출력
+            Toast.makeText(getActivity(), "지역이 선택되었습니다", Toast.LENGTH_SHORT).show();
             myDialogResult.finish(select_result);
         }
+
     }
 
     public void setDialogResult(OnMyDialogResult dialogResult){
