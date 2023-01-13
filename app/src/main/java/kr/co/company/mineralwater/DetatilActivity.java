@@ -185,8 +185,6 @@ public class DetatilActivity extends AppCompatActivity {
         water_warning7.setText(stageArr[6]);
         water_warning8.setText(stageArr[7]);
 
-
-
         adapter = new HomeAdapter(searchList);
     }
 
