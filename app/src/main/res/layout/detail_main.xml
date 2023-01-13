@@ -63,7 +63,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
-            android:text="경고 단계 : "
+            android:text="위험도 "
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/water_price" />
@@ -314,8 +314,10 @@
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="50dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

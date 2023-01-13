@@ -199,7 +199,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         factory_name = adapter.JSONParseForFCName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         price = adapter.JSONParseForPrice(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
-                        
+
                         intent.putExtra("가격", price);
                         intent.putExtra("지역 정보", locArr);
                         intent.putExtra("공장 이름", factory_name);

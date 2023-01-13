@@ -24,7 +24,7 @@ public class DetatilActivity extends AppCompatActivity {
     public ArrayList<String> searchList = new ArrayList<>();
     public HomeFragment homeFragment;
 
-    // 상세 정보 TextView
+    // 상세 정보
     private TextView water_name;
     private TextView water_size;
     private TextView water_price;
@@ -37,8 +37,19 @@ public class DetatilActivity extends AppCompatActivity {
     private TextView water_detail_info7;
     private TextView water_detail_info8;
 
+    // 경고 단계
+    private TextView water_warning;
+    private TextView water_warning2;
+    private TextView water_warning3;
+    private TextView water_warning4;
+    private TextView water_warning5;
+    private TextView water_warning6;
+    private TextView water_warning7;
+    private TextView water_warning8;
+
     private String[] infoArr = {"", "", "", "","", "", "", ""}; // 공장 주소 담을 문자열 배열
     private String[] fcArr = {"", "", "", "","", "", "", ""}; // 공장 이름 담을 문자열 배열
+    private String[] stageArr = {"", "", "", "","", "", "", ""}; // 경고 단계 담을 문자열 배열
 
     private ImageView mark_image; // 위험 단계 마크
     private ImageView mark_image2; // 보통 단계 마크
@@ -64,7 +75,7 @@ public class DetatilActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.popup_warning); // xml 파일과 연동
 
         // 버튼 : 커스텀 다이얼로그 띄우기
-        mark_image.setOnClickListener(new View.OnClickListener(){
+        mark_image.setOnClickListener(new View.OnClickListener(){ // 위험 마크
 
             @Override
             public void onClick(View view) {
@@ -72,7 +83,7 @@ public class DetatilActivity extends AppCompatActivity {
             }
         });
 
-        mark_image2.setOnClickListener(new View.OnClickListener(){
+        mark_image2.setOnClickListener(new View.OnClickListener(){ // 불안 마크
 
             @Override
             public void onClick(View view) {
@@ -80,7 +91,7 @@ public class DetatilActivity extends AppCompatActivity {
             }
         });
 
-        mark_image3.setOnClickListener(new View.OnClickListener(){
+        mark_image3.setOnClickListener(new View.OnClickListener(){ // 안전 마크
 
             @Override
             public void onClick(View view) {
@@ -91,9 +102,10 @@ public class DetatilActivity extends AppCompatActivity {
         //homeFragment
         Intent intent = getIntent();
 
-        water_name = findViewById(R.id.water_name);
-        water_size = findViewById(R.id.water_size);
-        water_price = findViewById(R.id.water_price);
+        water_name = findViewById(R.id.water_name); // 제품명 객체
+        water_size = findViewById(R.id.water_size); // 용량 객체
+        water_price = findViewById(R.id.water_price); // 가격 객체
+        // 제조 공장 객체
         water_detail_info = findViewById(R.id.water_detail_info);
         water_detail_info2 = findViewById(R.id.water_detail_info2);
         water_detail_info3 = findViewById(R.id.water_detail_info3);
@@ -102,6 +114,15 @@ public class DetatilActivity extends AppCompatActivity {
         water_detail_info6 = findViewById(R.id.water_detail_info6);
         water_detail_info7 = findViewById(R.id.water_detail_info7);
         water_detail_info8 = findViewById(R.id.water_detail_info8);
+        // 경고 단계 객체
+        water_warning = findViewById(R.id.water_warning);
+        water_warning2 = findViewById(R.id.water_warning2);
+        water_warning3 = findViewById(R.id.water_warning3);
+        water_warning4 = findViewById(R.id.water_warning4);
+        water_warning5 = findViewById(R.id.water_warning5);
+        water_warning6 = findViewById(R.id.water_warning6);
+        water_warning7 = findViewById(R.id.water_warning7);
+        water_warning8 = findViewById(R.id.water_warning8);
 
         // 상세 정보 파싱
         ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
@@ -118,10 +139,22 @@ public class DetatilActivity extends AppCompatActivity {
         ArrayList<String> warning_stage = intent.getStringArrayListExtra("경고 단계");
         int max = 0;
         for(int i=0; i<warning_stage.size(); i++){
+            switch (warning_stage.get(i)){
+                case "0":
+                    stageArr[i] = "공장 경고 단계 : 안전";
+                    break;
+                case "1":
+                    stageArr[i] = "공장 경고 단계 : 보통";
+                    break;
+                case "2":
+                    stageArr[i] = "공장 경고 단계 : 위험";
+                    break;
+            }
             if(Integer.parseInt(warning_stage.get(i))>max){
                 max = Integer.parseInt(warning_stage.get(i));
             }
         }
+
         if (max == 0){
             mark_image3.setVisibility(View.VISIBLE);
         }else if(max==1){
@@ -142,6 +175,15 @@ public class DetatilActivity extends AppCompatActivity {
         water_detail_info6.setText(fcArr[5]+"\n"+infoArr[5]+"");
         water_detail_info7.setText(fcArr[6]+"\n"+infoArr[6]+"");
         water_detail_info8.setText(fcArr[7]+"\n"+infoArr[7]+"");
+
+        water_warning.setText(stageArr[0]);
+        water_warning2.setText(stageArr[1]);
+        water_warning3.setText(stageArr[2]);
+        water_warning4.setText(stageArr[3]);
+        water_warning5.setText(stageArr[4]);
+        water_warning6.setText(stageArr[5]);
+        water_warning7.setText(stageArr[6]);
+        water_warning8.setText(stageArr[7]);
 
         adapter = new HomeAdapter(searchList);
     }

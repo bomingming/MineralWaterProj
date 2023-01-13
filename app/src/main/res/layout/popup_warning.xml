@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
-            android:text="보통\n경고 1번 이상 받은 상태"
+            android:text="불안\n경고 1번 이상 받은 상태"
             android:textColor="#000000"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/yellow_mark"
