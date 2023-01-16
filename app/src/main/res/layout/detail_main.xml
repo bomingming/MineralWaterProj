@@ -146,6 +146,16 @@
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
 
+        <View
+            android:id="@+id/line1"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning"/>
+
         <!--제품 평균 품질의 등급 마크-->
         <ImageView
             android:id="@+id/mark_image"
@@ -231,6 +241,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line2"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning2"/>
 
         <!--3-->
         <TextView
@@ -287,6 +306,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line3"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning3"/>
 
         <!--4-->
         <TextView
@@ -312,6 +340,7 @@
             app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
             android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"/>
+
         <!--정보4의 등급 마크-->
         <ImageView
             android:id="@+id/grade4_1"
@@ -343,6 +372,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line4"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning4"/>
 
         <!--5-->
         <TextView
@@ -368,6 +406,7 @@
             app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
             android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"/>
+
         <!--정보5의 등급 마크-->
         <ImageView
             android:id="@+id/grade5_1"
@@ -399,6 +438,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line5"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning5"/>
 
         <!--6-->
         <TextView
@@ -424,6 +472,7 @@
             app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
             android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"/>
+
         <!--정보6의 등급 마크-->
         <ImageView
             android:id="@+id/grade6_1"
@@ -455,6 +504,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line6"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning6"/>
 
         <!--7-->
         <TextView
@@ -480,6 +538,7 @@
             app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
             android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"/>
+
         <!--정보7의 등급 마크-->
         <ImageView
             android:id="@+id/grade7_1"
@@ -511,6 +570,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line7"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning7"/>
 
         <!--8-->
         <TextView
@@ -538,6 +606,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="50dp"/>
+
         <!--정보8의 등급 마크-->
         <ImageView
             android:id="@+id/grade8_1"
@@ -569,6 +638,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:visibility="gone"/>
+        <View
+            android:id="@+id/line8"
+            android:layout_width="350dp"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_warning8"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

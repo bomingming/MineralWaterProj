@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
@@ -172,6 +173,15 @@ public class DetatilActivity extends AppCompatActivity {
         for(int i=0; i<factory_name.size(); i++){
             fcArr[i] = factory_name.get(i);
         }
+
+        /*// java에서 View 추가
+        ConstraintLayout constraintLayout = new ConstraintLayout(this);
+        constraintLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
+
+        View view = new View(this);
+        view.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
+        constraintLayout.addView(view);
+        setContentView(constraintLayout);*/
 
         ArrayList<String> warning_stage = intent.getStringArrayListExtra("경고 단계");
         int max = 0;
