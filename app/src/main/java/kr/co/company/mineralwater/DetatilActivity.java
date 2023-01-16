@@ -128,7 +128,7 @@ public class DetatilActivity extends AppCompatActivity {
         ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
 
         for(int i=0; i<locArr.size(); i++){
-            infoArr[i] = locArr.get(i);
+            infoArr[i] = "("+locArr.get(i)+")";
         }
 
         ArrayList<String> factory_name = intent.getStringArrayListExtra("공장 이름");
@@ -167,14 +167,14 @@ public class DetatilActivity extends AppCompatActivity {
         water_size.setText("용량 : " +intent.getStringExtra("제품용량"));
         water_price.setText("가격 : "+intent.getStringExtra("가격")+"원");
 
-        water_detail_info.setText(fcArr[0]+"\n"+infoArr[0]+"");
-        water_detail_info2.setText(fcArr[1]+"\n"+infoArr[1]+"");
-        water_detail_info3.setText(fcArr[2]+"\n"+infoArr[2]+"");
-        water_detail_info4.setText(fcArr[3]+"\n"+infoArr[3]+"");
-        water_detail_info5.setText(fcArr[4]+"\n"+infoArr[4]+"");
-        water_detail_info6.setText(fcArr[5]+"\n"+infoArr[5]+"");
-        water_detail_info7.setText(fcArr[6]+"\n"+infoArr[6]+"");
-        water_detail_info8.setText(fcArr[7]+"\n"+infoArr[7]+"");
+        water_detail_info.setText(fcArr[0]+"\n"+infoArr[0]);
+        water_detail_info2.setText(fcArr[1]+"\n"+infoArr[1]);
+        water_detail_info3.setText(fcArr[2]+"\n"+infoArr[2]);
+        water_detail_info4.setText(fcArr[3]+"\n"+infoArr[3]);
+        water_detail_info5.setText(fcArr[4]+"\n"+infoArr[4]);
+        water_detail_info6.setText(fcArr[5]+"\n"+infoArr[5]);
+        water_detail_info7.setText(fcArr[6]+"\n"+infoArr[6]);
+        water_detail_info8.setText(fcArr[7]+"\n"+infoArr[7]);
 
         water_warning.setText(stageArr[0]);
         water_warning2.setText(stageArr[1]);

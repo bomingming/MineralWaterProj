@@ -63,7 +63,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
-            android:text="위험도 "
+            android:text="제품 평균 품질 "
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/water_price" />
@@ -104,7 +104,7 @@
 
         <TextView
             android:id="@+id/water_warning"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계"
@@ -157,7 +157,7 @@
 
         <TextView
             android:id="@+id/water_warning2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계2"
@@ -182,7 +182,7 @@
 
         <TextView
             android:id="@+id/water_warning3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계3"
@@ -207,7 +207,7 @@
 
         <TextView
             android:id="@+id/water_warning4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계4"
@@ -220,7 +220,7 @@
         <!--5-->
         <TextView
             android:id="@+id/water_detail_info5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보5 (공장 주소 등)"
@@ -232,7 +232,7 @@
 
         <TextView
             android:id="@+id/water_warning5"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계5"
@@ -257,7 +257,7 @@
 
         <TextView
             android:id="@+id/water_warning6"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계6"
@@ -282,7 +282,7 @@
 
         <TextView
             android:id="@+id/water_warning7"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계7"
@@ -307,7 +307,7 @@
 
         <TextView
             android:id="@+id/water_warning8"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계8"
