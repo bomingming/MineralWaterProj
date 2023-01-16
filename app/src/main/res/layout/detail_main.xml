@@ -63,7 +63,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
-            android:text="제품 평균 품질 "
+            android:text="제품 품질 "
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/water_price" />
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보 (공장 주소 등)"
             android:textSize="17dp"
