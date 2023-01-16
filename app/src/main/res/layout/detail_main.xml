@@ -154,7 +154,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning"
+            android:visibility="gone"/>
 
         <!--제품 평균 품질의 등급 마크-->
         <ImageView
@@ -249,7 +250,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning2"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning2"
+            android:visibility="gone"/>
 
         <!--3-->
         <TextView
@@ -314,7 +316,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning3"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning3"
+            android:visibility="gone"/>
 
         <!--4-->
         <TextView
@@ -380,7 +383,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning4"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning4"
+            android:visibility="gone"/>
 
         <!--5-->
         <TextView
@@ -446,7 +450,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning5"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning5"
+            android:visibility="gone"/>
 
         <!--6-->
         <TextView
@@ -512,7 +517,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning6"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning6"
+            android:visibility="gone"/>
 
         <!--7-->
         <TextView
@@ -578,7 +584,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning7"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning7"
+            android:visibility="gone"/>
 
         <!--8-->
         <TextView
@@ -646,7 +653,8 @@
             android:background="#A9A9A9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning8"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning8"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -35,6 +35,7 @@ public class DetatilActivity extends AppCompatActivity {
     // 경고 단계
     private TextView water_warning, water_warning2, water_warning3, water_warning4, water_warning5, water_warning6, water_warning7, water_warning8;
 
+    // 공장 별 경고 단계
     private ImageView grade1_1, grade1_2, grade1_3;
     private ImageView grade2_1, grade2_2, grade2_3;
     private ImageView grade3_1, grade3_2, grade3_3;
@@ -44,9 +45,8 @@ public class DetatilActivity extends AppCompatActivity {
     private ImageView grade7_1, grade7_2, grade7_3;
     private ImageView grade8_1, grade8_2, grade8_3;
 
-    /*private ImageView[] grade_safe = {grade1_1, grade2_1, grade3_1, grade4_1, grade5_1, grade6_1, grade7_1, grade8_1};
-    private ImageView[] grade_middle = {grade1_2, grade2_2,grade3_2,grade4_2,grade5_2,grade6_2,grade7_2,grade8_2};
-    private ImageView[] grade_dangerous = {grade1_3, grade2_3,grade3_3,grade4_3,grade5_3,grade6_3,grade7_3,grade8_3};*/
+    // 공장 분할선
+    private View line1, line2, line3, line4, line5, line6, line7, line8;
 
     private String[] infoArr = {"", "", "", "","", "", "", ""}; // 공장 주소 담을 문자열 배열
     private String[] fcArr = {"", "", "", "","", "", "", ""}; // 공장 이름 담을 문자열 배열
@@ -106,6 +106,7 @@ public class DetatilActivity extends AppCompatActivity {
         water_name = findViewById(R.id.water_name); // 제품명 객체
         water_size = findViewById(R.id.water_size); // 용량 객체
         water_price = findViewById(R.id.water_price); // 가격 객체
+
         // 제조 공장 객체
         water_detail_info = findViewById(R.id.water_detail_info);
         water_detail_info2 = findViewById(R.id.water_detail_info2);
@@ -162,6 +163,18 @@ public class DetatilActivity extends AppCompatActivity {
         ImageView[] grade_middle = {grade1_2, grade2_2,grade3_2,grade4_2,grade5_2,grade6_2,grade7_2,grade8_2};
         ImageView[] grade_dangerous = {grade1_3, grade2_3,grade3_3,grade4_3,grade5_3,grade6_3,grade7_3,grade8_3};
 
+        // 공장 분할선 객체 할당
+        line1 = findViewById(R.id.line1);
+        line2 = findViewById(R.id.line2);
+        line3 = findViewById(R.id.line3);
+        line4 = findViewById(R.id.line4);
+        line5 = findViewById(R.id.line5);
+        line6 = findViewById(R.id.line6);
+        line7 = findViewById(R.id.line7);
+        line8 = findViewById(R.id.line8);
+
+        View[] lineArr = {line1, line2, line3, line4, line5, line6, line7, line8};
+
         // 상세 정보 파싱
         ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
 
@@ -174,19 +187,11 @@ public class DetatilActivity extends AppCompatActivity {
             fcArr[i] = factory_name.get(i);
         }
 
-        /*// java에서 View 추가
-        ConstraintLayout constraintLayout = new ConstraintLayout(this);
-        constraintLayout.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
-
-        View view = new View(this);
-        view.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
-        constraintLayout.addView(view);
-        setContentView(constraintLayout);*/
-
         ArrayList<String> warning_stage = intent.getStringArrayListExtra("경고 단계");
         int max = 0;
         for(int i=0; i<warning_stage.size(); i++){
             stageArr[i] = "공장 경고 단계";
+            lineArr[i].setVisibility(View.VISIBLE);
             switch (warning_stage.get(i)){
                 case "0": // 안전
                     grade_safe[i].setVisibility(View.VISIBLE);
