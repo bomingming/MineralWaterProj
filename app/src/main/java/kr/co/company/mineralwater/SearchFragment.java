@@ -108,6 +108,9 @@ public class SearchFragment extends Fragment {
                     @Override
                     public void run(){
                         selectSize = selectSize.replaceAll("[^0-d]","");
+                        if(selectSize.contains("L")){ // L 단위인 경우 00을 추가
+                            selectSize = selectSize.replaceAll("L","00");
+                        }
                         locArr = adapter.JSONParseForLoc(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         factory_name = adapter.JSONParseForFCName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));

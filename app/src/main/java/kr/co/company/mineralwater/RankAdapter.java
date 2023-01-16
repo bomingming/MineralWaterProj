@@ -25,10 +25,11 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
     private ArrayList<String> localDataSet;
     private ArrayList<String> numbDataSet;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
         private TextView rank_number;
         private ImageView imageView;
+        private RankFragment rankFragment;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -36,13 +37,22 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             imageView = itemView.findViewById(R.id.rank_image); // 제품 사진
             rank_number = itemView.findViewById(R.id.rank_number); // 순위
 
+            rankFragment = new RankFragment();
+
             // 항목 클릭 시 상세정보 화면으로 이동
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                    intent.putExtra("값 테스트", "랭킹 화면과 연결 성공");
-                    view.getContext().startActivity(intent);
+                    // 클릭된 아이템의 위치 가져오기
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        // 클릭 이벤트
+
+                        // 리스너 객체의 메소드 호출
+                        if(mListener != null){
+                            mListener.onItemClick(view, pos);
+                        }
+                    }
                 }
             });
         }
@@ -55,9 +65,18 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
         localDataSet = dataSet;
         numbDataSet = numSet;
     }
-    
-    // Fragment에서 recyclerView를 채울 데이터(ArrayList) - 원본
-    // public RankAdapter(ArrayList<String> dataSet){localDataSet = dataSet;}
+
+     // 리스너 객체 참조를 저장하는 변수
+    private OnItemClickListener mListener = null;
+
+    // OnItemClickListener 리스너 객체 참조를 Adapter에 전달하는 메소드
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View v, int position);
+    }
 
     @NonNull
     @Override
@@ -129,5 +148,67 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             e.printStackTrace();
         }
         return DataArray;
+    }
+    // 상세 정보를 위한 메소드
+    // 제조 공장 파싱
+    ArrayList<String> JSONParseForFCName(String jsonStr){
+        ArrayList<String> FCNameArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String FCName = jsonObject.getString("factory_name"); // 제조 공장 문자열로 파싱
+                FCNameArray.add(FCName);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return FCNameArray;
+    }
+
+    // 공장 주소 파싱
+    ArrayList<String> JSONParseForLoc(String jsonStr){
+        ArrayList<String> locationArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String location = jsonObject.getString("location"); // 공장 주소 문자열로 파싱
+                locationArray.add(location);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return locationArray;
+    }
+
+    // 가격 파싱
+    String JSONParseForPrice(String jsonStr){
+        ArrayList<String> priceArray = new ArrayList<>();
+        String price = new String();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            price = jsonObject.getString("price");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return price;
+    }
+
+    // 경고 단계 파싱
+    ArrayList<String> JSONParseForWarn(String jsonStr){
+        ArrayList<String> warnArray = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String warning = jsonObject.getString("warning_stage"); // 경고 단계 문자열로 파싱
+                warnArray.add(warning);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return warnArray;
     }
 }

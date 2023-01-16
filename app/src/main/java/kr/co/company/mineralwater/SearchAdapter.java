@@ -40,9 +40,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*Intent intent = new Intent(view.getContext(), DetatilActivity.class);
-                    intent.putExtra("값 테스트", "검색창과 연결 성공");
-                    view.getContext().startActivity(intent);*/
                     // 클릭된 아이템의 위치 가져오기
                     int pos = getAdapterPosition();
                     if(pos != RecyclerView.NO_POSITION){
