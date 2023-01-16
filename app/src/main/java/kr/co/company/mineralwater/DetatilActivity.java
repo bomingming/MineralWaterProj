@@ -28,24 +28,24 @@ public class DetatilActivity extends AppCompatActivity {
     private TextView water_name;
     private TextView water_size;
     private TextView water_price;
-    private TextView water_detail_info;
-    private TextView water_detail_info2;
-    private TextView water_detail_info3;
-    private TextView water_detail_info4;
-    private TextView water_detail_info5;
-    private TextView water_detail_info6;
-    private TextView water_detail_info7;
-    private TextView water_detail_info8;
+
+    private TextView water_detail_info, water_detail_info2, water_detail_info3, water_detail_info4, water_detail_info5, water_detail_info6, water_detail_info7, water_detail_info8;
 
     // 경고 단계
-    private TextView water_warning;
-    private TextView water_warning2;
-    private TextView water_warning3;
-    private TextView water_warning4;
-    private TextView water_warning5;
-    private TextView water_warning6;
-    private TextView water_warning7;
-    private TextView water_warning8;
+    private TextView water_warning, water_warning2, water_warning3, water_warning4, water_warning5, water_warning6, water_warning7, water_warning8;
+
+    private ImageView grade1_1, grade1_2, grade1_3;
+    private ImageView grade2_1, grade2_2, grade2_3;
+    private ImageView grade3_1, grade3_2, grade3_3;
+    private ImageView grade4_1, grade4_2, grade4_3;
+    private ImageView grade5_1, grade5_2, grade5_3;
+    private ImageView grade6_1, grade6_2, grade6_3;
+    private ImageView grade7_1, grade7_2, grade7_3;
+    private ImageView grade8_1, grade8_2, grade8_3;
+
+    /*private ImageView[] grade_safe = {grade1_1, grade2_1, grade3_1, grade4_1, grade5_1, grade6_1, grade7_1, grade8_1};
+    private ImageView[] grade_middle = {grade1_2, grade2_2,grade3_2,grade4_2,grade5_2,grade6_2,grade7_2,grade8_2};
+    private ImageView[] grade_dangerous = {grade1_3, grade2_3,grade3_3,grade4_3,grade5_3,grade6_3,grade7_3,grade8_3};*/
 
     private String[] infoArr = {"", "", "", "","", "", "", ""}; // 공장 주소 담을 문자열 배열
     private String[] fcArr = {"", "", "", "","", "", "", ""}; // 공장 이름 담을 문자열 배열
@@ -124,6 +124,43 @@ public class DetatilActivity extends AppCompatActivity {
         water_warning7 = findViewById(R.id.water_warning7);
         water_warning8 = findViewById(R.id.water_warning8);
 
+        // 상세 정보 별 등급 마크
+        grade1_1 = findViewById(R.id.grade1_1);
+        grade1_2 = findViewById(R.id.grade1_2);
+        grade1_3 = findViewById(R.id.grade1_3);
+
+        grade2_1 = findViewById(R.id.grade2_1);
+        grade2_2 = findViewById(R.id.grade2_2);
+        grade2_3 = findViewById(R.id.grade2_3);
+
+        grade3_1 = findViewById(R.id.grade3_1);
+        grade3_2 = findViewById(R.id.grade3_2);
+        grade3_3 = findViewById(R.id.grade3_3);
+
+        grade4_1 = findViewById(R.id.grade4_1);
+        grade4_2 = findViewById(R.id.grade4_2);
+        grade4_3 = findViewById(R.id.grade4_3);
+
+        grade5_1 = findViewById(R.id.grade5_1);
+        grade5_2 = findViewById(R.id.grade5_2);
+        grade5_3 = findViewById(R.id.grade5_3);
+
+        grade6_1 = findViewById(R.id.grade6_1);
+        grade6_2 = findViewById(R.id.grade6_2);
+        grade6_3 = findViewById(R.id.grade6_3);
+
+        grade7_1 = findViewById(R.id.grade7_1);
+        grade7_2 = findViewById(R.id.grade7_2);
+        grade7_3 = findViewById(R.id.grade7_3);
+
+        grade8_1 = findViewById(R.id.grade8_1);
+        grade8_2 = findViewById(R.id.grade8_2);
+        grade8_3 = findViewById(R.id.grade8_3);
+
+        ImageView[] grade_safe = {grade1_1, grade2_1, grade3_1, grade4_1, grade5_1, grade6_1, grade7_1, grade8_1};
+        ImageView[] grade_middle = {grade1_2, grade2_2,grade3_2,grade4_2,grade5_2,grade6_2,grade7_2,grade8_2};
+        ImageView[] grade_dangerous = {grade1_3, grade2_3,grade3_3,grade4_3,grade5_3,grade6_3,grade7_3,grade8_3};
+
         // 상세 정보 파싱
         ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
 
@@ -139,15 +176,16 @@ public class DetatilActivity extends AppCompatActivity {
         ArrayList<String> warning_stage = intent.getStringArrayListExtra("경고 단계");
         int max = 0;
         for(int i=0; i<warning_stage.size(); i++){
+            stageArr[i] = "공장 경고 단계";
             switch (warning_stage.get(i)){
-                case "0":
-                    stageArr[i] = "공장 경고 단계 : 안전";
+                case "0": // 안전
+                    grade_safe[i].setVisibility(View.VISIBLE);
                     break;
-                case "1":
-                    stageArr[i] = "공장 경고 단계 : 보통";
+                case "1": // 보통
+                    grade_middle[i].setVisibility(View.VISIBLE);
                     break;
-                case "2":
-                    stageArr[i] = "공장 경고 단계 : 위험";
+                case "2": // 위험
+                    grade_dangerous[i].setVisibility(View.VISIBLE);
                     break;
             }
             if(Integer.parseInt(warning_stage.get(i))>max){
