@@ -195,7 +195,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     @Override
                     public void run(){
                         selectSize = selectSize.replaceAll("[^0-d]","");
+                        if(selectSize.contains("L")){
+                            selectSize = selectSize.replaceAll("L","00");
+                        }
                         locArr = adapter.JSONParseForLoc(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
+                        Log.e("1L 이상 제품 시도 중", selectSize);
                         factory_name = adapter.JSONParseForFCName(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         warning_stage = adapter.JSONParseForWarn(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
                         price = adapter.JSONParseForPrice(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
