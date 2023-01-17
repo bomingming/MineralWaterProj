@@ -245,12 +245,14 @@ public class DetatilActivity extends AppCompatActivity {
         water_warning6.setText(stageArr[5]);
         water_warning7.setText(stageArr[6]);
         water_warning8.setText(stageArr[7]);
+        
+        String imageCode = intent.getStringExtra("이미지"); // 선택한 항목의 이미지 코드
 
-        String imageCode = intent.getStringExtra("이미지");
-
+        // 이미지 코드(문자열)에서 알맞은 형식으로 문자열 변환
         imageCode = imageCode.replaceAll("img id=\\\"image_size\\\" src=\\\"data:image/jpeg;base64,","");
         imageCode = imageCode.replaceAll("\"/>","");
 
+        // byte 배열로 변환 후 비트맵으로 변환하여 이미지 바꾸어줌
         byte[] encodeByte = Base64.decode(imageCode, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
         bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);

@@ -211,4 +211,18 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
         }
         return warnArray;
     }
+
+    // 이미지 파싱
+    String JSONParseForImage(String jsonStr){
+        //ArrayList<String> imageArray = new ArrayList<>();
+        String image = new String();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            JSONObject jsonObject = jsonArray.getJSONObject(0);
+            image = jsonObject.getString("image");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return image;
+    }
 }

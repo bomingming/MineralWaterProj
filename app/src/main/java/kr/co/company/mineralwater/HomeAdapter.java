@@ -219,7 +219,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return warnArray;
     }
 
-    // 이미지 파싱 시도
+    // 이미지 파싱
     String JSONParseForImage(String jsonStr){
         //ArrayList<String> imageArray = new ArrayList<>();
         String image = new String();
