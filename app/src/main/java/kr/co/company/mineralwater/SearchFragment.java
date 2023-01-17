@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,8 @@ public class SearchFragment extends Fragment {
     public ArrayList<String> factory_name;
     public ArrayList<String> warning_stage;
     public String price = "";
+
+    //private ImageView search_notice; // 검색 결과 없을 시 띄울 사진
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -57,6 +60,8 @@ public class SearchFragment extends Fragment {
             }
         }.start();
 
+        ImageView search_notcie = (ImageView)v.findViewById(R.id.search_notcie);
+
         // SearchView 사용
         searchView = (SearchView) v.findViewById(R.id.search_view); // searchView 객체 생성
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
@@ -76,6 +81,11 @@ public class SearchFragment extends Fragment {
                             @Override
                             public void run() {
                                 adapter.setSearchList(newSearchList);
+                                if(newSearchList.isEmpty()){
+                                    search_notcie.setVisibility(View.VISIBLE);
+                                }else{
+                                    search_notcie.setVisibility(View.GONE);
+                                }
                             }
                         });
                     }
