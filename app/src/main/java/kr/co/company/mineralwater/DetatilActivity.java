@@ -2,7 +2,10 @@ package kr.co.company.mineralwater;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +18,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class DetatilActivity extends AppCompatActivity {
@@ -55,6 +59,8 @@ public class DetatilActivity extends AppCompatActivity {
     private ImageView mark_image; // 위험 단계 마크
     private ImageView mark_image2; // 보통 단계 마크
     private ImageView mark_image3; // 안전 단계 마크
+
+    private ImageView detail_image; // 이미지 파싱 시도
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -175,6 +181,8 @@ public class DetatilActivity extends AppCompatActivity {
 
         View[] lineArr = {line1, line2, line3, line4, line5, line6, line7, line8};
 
+        detail_image = findViewById(R.id.detail_image); // 이미지 객체 선언
+
         // 상세 정보 파싱
         ArrayList<String> locArr = intent.getStringArrayListExtra("지역 정보");
 
@@ -237,6 +245,16 @@ public class DetatilActivity extends AppCompatActivity {
         water_warning6.setText(stageArr[5]);
         water_warning7.setText(stageArr[6]);
         water_warning8.setText(stageArr[7]);
+
+        String imageCode = intent.getStringExtra("이미지");
+
+        imageCode = imageCode.replaceAll("img id=\\\"image_size\\\" src=\\\"data:image/jpeg;base64,","");
+        imageCode = imageCode.replaceAll("\"/>","");
+
+        byte[] encodeByte = Base64.decode(imageCode, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+        bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);
+        detail_image.setImageBitmap(bitmap);
 
         adapter = new HomeAdapter(searchList);
     }

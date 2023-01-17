@@ -209,6 +209,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                         intent.putExtra("공장 이름", factory_name);
                         intent.putExtra("경고 단계", warning_stage);
 
+                        // 이미지 파싱 시도
+                        String imageTest = adapter.JSONParseForImage(adapter.JSONLink("https://wwater.xyz:4443/rjh/4.php?name="+selectName+"&capacity="+selectSize));
+                        intent.putExtra("이미지", imageTest);
+
                         // 서버 연결을 위한 Thread 작업이 끝난 뒤 intent를 실행해야 변화된 값으로 setText를 할 수 있음
                         v.getContext().startActivity(intent);
                     }
