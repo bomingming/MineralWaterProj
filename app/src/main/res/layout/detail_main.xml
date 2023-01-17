@@ -28,9 +28,9 @@
             android:layout_marginTop="50dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="제품 이름"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_image"
-            android:textSize="20dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/detail_image" />
 
         <TextView
             android:id="@+id/water_size"
@@ -40,9 +40,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="제품 용량"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_name"
-            android:textSize="20dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_name" />
 
         <TextView
             android:id="@+id/water_price"
@@ -52,9 +52,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="제품 가격"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_size"
-            android:textSize="20dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_size" />
 
         <TextView
             android:id="@+id/water_dangerous_degree"
@@ -72,23 +72,23 @@
             android:id="@+id/info_notice_mark"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/logo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree" />
 
         <TextView
             android:id="@+id/info_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="해당 제품 제조 공장"
             android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@+id/info_notice_mark"
-            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_dangerous_degree" />
 
         <TextView
             android:id="@+id/water_detail_info"
@@ -106,45 +106,47 @@
             android:id="@+id/water_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계"
+            android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"
-            android:textSize="17dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info" />
 
         <!--정보1의 등급 마크-->
         <ImageView
             android:id="@+id/grade1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info" />
+
         <ImageView
             android:id="@+id/grade1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info" />
+
         <ImageView
             android:id="@+id/grade1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info" />
 
         <View
             android:id="@+id/line1"
@@ -152,509 +154,542 @@
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning" />
+
+        <ImageView
+            android:id="@+id/mark_notice"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/mark_notice"
+            app:layout_constraintStart_toStartOf="@+id/mark_image"
+            app:layout_constraintTop_toBottomOf="@+id/water_price"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="18dp"/>
 
         <!--제품 평균 품질의 등급 마크-->
         <ImageView
             android:id="@+id/mark_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
             app:layout_constraintTop_toBottomOf="@+id/water_price"
             app:srcCompat="@drawable/mark"
-            android:layout_marginTop="10dp"
             android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/mark_image2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
             app:layout_constraintTop_toBottomOf="@+id/water_price"
-            app:srcCompat="@drawable/middle_mark"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"/>
+            app:srcCompat="@drawable/middle_mark" />
+
         <ImageView
             android:id="@+id/mark_image3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@id/water_dangerous_degree"
             app:layout_constraintTop_toBottomOf="@+id/water_price"
-            app:srcCompat="@drawable/safe_mark"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"/>
+            app:srcCompat="@drawable/safe_mark" />
 
         <!--공장이 두 개 이상인 경우 값이 변하는 View-->
         <TextView
             android:id="@+id/water_detail_info2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보2 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning" />
 
         <TextView
             android:id="@+id/water_warning2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계2"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2" />
 
         <!--정보2의 등급 마크-->
         <ImageView
             android:id="@+id/grade2_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning2"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning2"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2" />
+
         <ImageView
             android:id="@+id/grade2_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning2"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning2"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2" />
+
         <ImageView
             android:id="@+id/grade2_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning2"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning2"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info2" />
+
         <View
             android:id="@+id/line2"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning2"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning2" />
 
         <!--3-->
         <TextView
             android:id="@+id/water_detail_info3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보3 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning2"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning2" />
 
         <TextView
             android:id="@+id/water_warning3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계3"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3" />
         <!--정보3의 등급 마크-->
         <ImageView
             android:id="@+id/grade3_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning3"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning3"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3" />
+
         <ImageView
             android:id="@+id/grade3_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning3"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning3"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3" />
+
         <ImageView
             android:id="@+id/grade3_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning3"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning3"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info3" />
+
         <View
             android:id="@+id/line3"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning3"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning3" />
 
         <!--4-->
         <TextView
             android:id="@+id/water_detail_info4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보4 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning3"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning3" />
 
         <TextView
             android:id="@+id/water_warning4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계4"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4" />
 
         <!--정보4의 등급 마크-->
         <ImageView
             android:id="@+id/grade4_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning4"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning4"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4" />
+
         <ImageView
             android:id="@+id/grade4_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning4"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning4"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4" />
+
         <ImageView
             android:id="@+id/grade4_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning4"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning4"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info4" />
+
         <View
             android:id="@+id/line4"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning4"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning4" />
 
         <!--5-->
         <TextView
             android:id="@+id/water_detail_info5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보5 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning4"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning4" />
 
         <TextView
             android:id="@+id/water_warning5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계5"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5" />
 
         <!--정보5의 등급 마크-->
         <ImageView
             android:id="@+id/grade5_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning5"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning5"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5" />
+
         <ImageView
             android:id="@+id/grade5_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning5"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning5"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5" />
+
         <ImageView
             android:id="@+id/grade5_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning5"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning5"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info5" />
+
         <View
             android:id="@+id/line5"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning5"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning5" />
 
         <!--6-->
         <TextView
             android:id="@+id/water_detail_info6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보6 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning5"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning5" />
 
         <TextView
             android:id="@+id/water_warning6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계6"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6" />
 
         <!--정보6의 등급 마크-->
         <ImageView
             android:id="@+id/grade6_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning6"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning6"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6" />
+
         <ImageView
             android:id="@+id/grade6_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning6"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning6"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6" />
+
         <ImageView
             android:id="@+id/grade6_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning6"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning6"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info6" />
+
         <View
             android:id="@+id/line6"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning6"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning6" />
 
         <!--7-->
         <TextView
             android:id="@+id/water_detail_info7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보7 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning6"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning6" />
 
         <TextView
             android:id="@+id/water_warning7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계7"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7" />
 
         <!--정보7의 등급 마크-->
         <ImageView
             android:id="@+id/grade7_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning7"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning7"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7" />
+
         <ImageView
             android:id="@+id/grade7_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning7"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning7"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7" />
+
         <ImageView
             android:id="@+id/grade7_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning7"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning7"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info7" />
+
         <View
             android:id="@+id/line7"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning7"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning7" />
 
         <!--8-->
         <TextView
             android:id="@+id/water_detail_info8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="상세 정보8 (공장 주소 등)"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning7"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="50dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning7" />
 
         <TextView
             android:id="@+id/water_warning8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
             android:fontFamily="@font/maruburisemibold"
             android:text="공장 경고 단계8"
             android:textSize="17dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="50dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8" />
 
         <!--정보8의 등급 마크-->
         <ImageView
             android:id="@+id/grade8_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/safe_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning8"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/safe_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning8"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8" />
+
         <ImageView
             android:id="@+id/grade8_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/middle_mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning8"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/middle_mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning8"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8" />
+
         <ImageView
             android:id="@+id/grade8_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mark"
-            app:layout_constraintStart_toEndOf="@+id/water_warning8"
-            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/mark"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/water_warning8"
+            app:layout_constraintTop_toBottomOf="@+id/water_detail_info8" />
+
         <View
             android:id="@+id/line8"
             android:layout_width="350dp"
             android:layout_height="2px"
             android:layout_marginTop="10dp"
             android:background="#A9A9A9"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/water_warning8"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@+id/water_warning8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

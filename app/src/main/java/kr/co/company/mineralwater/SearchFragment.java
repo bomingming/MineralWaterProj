@@ -80,9 +80,11 @@ public class SearchFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                adapter.setSearchList(newSearchList);
+                                adapter.setSearchList(newSearchList); // 검색창에 입력된 결과를 RecyclerView에 출력
+
+                                // 검색 결과가 없는 경우
                                 if(newSearchList.isEmpty()){
-                                    search_notcie.setVisibility(View.VISIBLE);
+                                    search_notcie.setVisibility(View.VISIBLE); // 알람 사진 띄우기
                                 }else{
                                     search_notcie.setVisibility(View.GONE);
                                 }
