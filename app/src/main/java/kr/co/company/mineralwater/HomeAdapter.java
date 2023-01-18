@@ -1,12 +1,15 @@
 package kr.co.company.mineralwater;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
 import android.provider.ContactsContract;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +33,15 @@ import java.util.Observable;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
     private ArrayList<String> localDataSet;
+    private ArrayList<String> imageDataSet;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{ // static 임의로 없앤 상태
+    public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public ArrayList<String> searchList = new ArrayList<>();
+        //public ArrayList<String> searchList = new ArrayList<>();
+        public ArrayList<String> imageList = new ArrayList<>();
         private TextView textView;
         private ImageView imageView;
+
         public HomeFragment homeFragment;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -81,8 +87,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         void onItemClick(View v, int position);
     }
 
-    public HomeAdapter(ArrayList<String> dataSet){
+    public HomeAdapter(ArrayList<String> dataSet, ArrayList<String> imagedataset){
         localDataSet = dataSet; // Fragement에서 Adapter 호출 시 들어간 매개변수가 목록의 값
+        imageDataSet = imagedataset;
     }
 
     @NonNull
@@ -97,6 +104,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
+        ArrayList<Bitmap> test = new ArrayList<>();
+
+        for(int i=0; i<imageDataSet.size(); i++){
+            byte[] encodeByte = Base64.decode(imageDataSet.get(i), Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);
+            holder.imageView.setImageBitmap(bitmap);
+            Log.e("비트맵 값", bitmap.toString());
+            test.add(bitmap);
+        }
+        holder.imageView.setImageBitmap(test.get(position));
     }
 
     @Override
@@ -106,6 +124,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     public void setSearchList(ArrayList<String> searchList){
         this.localDataSet = searchList;
+        notifyDataSetChanged();
+    }
+
+    public void setImageList(ArrayList<String> imageList){
+        this.imageDataSet = imageList;
         notifyDataSetChanged();
     }
 
@@ -221,7 +244,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     // 이미지 파싱
     String JSONParseForImage(String jsonStr){
-        //ArrayList<String> imageArray = new ArrayList<>();
         String image = new String();
         try{
             JSONArray jsonArray = new JSONArray(jsonStr);
@@ -231,5 +253,25 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             e.printStackTrace();
         }
         return image;
+    }
+
+    // 홈 화면에 이미지 파싱
+    ArrayList<String> JSONParseForImageHome(String jsonStr){
+        ArrayList<String> imageArr = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String imageCode = jsonObject.getString("image");
+
+                imageCode = imageCode.replaceAll("img id=\\\"image_size\\\" src=\\\"data:image/jpeg;base64,","");
+                imageCode = imageCode.replaceAll("\"/>","");
+
+                imageArr.add(imageCode);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return imageArr;
     }
 }

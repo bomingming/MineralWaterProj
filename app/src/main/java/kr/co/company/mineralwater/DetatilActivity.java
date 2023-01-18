@@ -27,6 +27,7 @@ public class DetatilActivity extends AppCompatActivity {
 
     public HomeAdapter adapter;
     public ArrayList<String> searchList = new ArrayList<>();
+    public ArrayList<String> imageList = new ArrayList<>();
     public HomeFragment homeFragment;
 
     // 상세 정보
@@ -258,7 +259,7 @@ public class DetatilActivity extends AppCompatActivity {
         bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);
         detail_image.setImageBitmap(bitmap);
 
-        adapter = new HomeAdapter(searchList);
+        adapter = new HomeAdapter(searchList, imageList);
     }
 
     // 커스텀 다이얼로그 디자인하는 함수

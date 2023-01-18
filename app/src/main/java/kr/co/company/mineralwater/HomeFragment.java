@@ -52,6 +52,7 @@ import java.util.Observable;
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     public ArrayList<String> searchList = new ArrayList<>(); // 생수 이름 리스트
+    public ArrayList<String> imageList = new ArrayList<>(); // 생수 이미지 리스트
     private RecyclerView recyclerView;
     public HomeAdapter adapter;
     public RadioGroup radioGroup;
@@ -78,7 +79,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         View v = inflater.inflate(R.layout.fragment_menu1, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_main);
         recyclerView.setHasFixedSize(true);
-        adapter = new HomeAdapter(searchList);
+        adapter = new HomeAdapter(searchList, imageList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -91,10 +92,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             @Override
             public void run(){
                 searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
                 getActivity().runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         adapter.setSearchList(searchList);
+                        adapter.setImageList(imageList);
                     }
                 });
             }
