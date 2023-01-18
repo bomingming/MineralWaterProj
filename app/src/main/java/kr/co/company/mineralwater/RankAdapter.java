@@ -1,6 +1,9 @@
 package kr.co.company.mineralwater;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
 
     private ArrayList<String> localDataSet;
     private ArrayList<String> numbDataSet;
+    private ArrayList<String> imageDataSet;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
@@ -61,9 +65,10 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
         }
     }
 
-    public RankAdapter(ArrayList<String> dataSet, ArrayList<String> numSet){
+    public RankAdapter(ArrayList<String> dataSet, ArrayList<String> numSet, ArrayList<String> imagedataset){
         localDataSet = dataSet;
         numbDataSet = numSet;
+        imageDataSet = imagedataset;
     }
 
      // 리스너 객체 참조를 저장하는 변수
@@ -91,6 +96,15 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
     public void onBindViewHolder(@NonNull RankAdapter.MyViewHolder holder, int position) {
         holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
         holder.rank_number.setText(numbDataSet.get(position)); // 랭킹 숫자
+        //생수 이미지 출력
+        ArrayList<Bitmap> bitArr = new ArrayList<>(); // 비트맵 보관할 ArrayList
+        for(int i=0; i<imageDataSet.size(); i++){
+            byte[] encodeByte = Base64.decode(imageDataSet.get(i), Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);
+            bitArr.add(bitmap); // 이미지 코드를 비트맵으로 변환한 후 bitArr에 보관
+        }
+        holder.imageView.setImageBitmap(bitArr.get(position)); // 생수 이미지 출력
     }
 
     @Override
@@ -100,6 +114,11 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
 
     public void setSearchList(ArrayList<String> searchList){
         this.localDataSet = searchList;
+        notifyDataSetChanged();
+    }
+
+    public void setImageList(ArrayList<String> imageList){
+        this.imageDataSet = imageList;
         notifyDataSetChanged();
     }
 
@@ -224,5 +243,25 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.MyViewHolder>{
             e.printStackTrace();
         }
         return image;
+    }
+
+    // 홈 화면에 이미지 파싱
+    ArrayList<String> JSONParseForImageHome(String jsonStr){
+        ArrayList<String> imageArr = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String imageCode = jsonObject.getString("image");
+
+                imageCode = imageCode.replaceAll("img id=\\\"image_size\\\" src=\\\"data:image/jpeg;base64,","");
+                imageCode = imageCode.replaceAll("\"/>","");
+
+                imageArr.add(imageCode);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return imageArr;
     }
 }
