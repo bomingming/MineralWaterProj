@@ -103,18 +103,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
-        ArrayList<Bitmap> test = new ArrayList<>();
-
+        holder.textView.setText(localDataSet.get(position)); // 생수명 출력
+        
+        //생수 이미지 출력
+        ArrayList<Bitmap> bitArr = new ArrayList<>(); // 비트맵 보관할 ArrayList
         for(int i=0; i<imageDataSet.size(); i++){
             byte[] encodeByte = Base64.decode(imageDataSet.get(i), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
             bitmap = Bitmap.createScaledBitmap(bitmap, 600, 600, true);
-            holder.imageView.setImageBitmap(bitmap);
-            Log.e("비트맵 값", bitmap.toString());
-            test.add(bitmap);
+            bitArr.add(bitmap); // 이미지 코드를 비트맵으로 변환한 후 bitArr에 보관
         }
-        holder.imageView.setImageBitmap(test.get(position));
+        holder.imageView.setImageBitmap(bitArr.get(position)); // 생수 이미지 출력
     }
 
     @Override
