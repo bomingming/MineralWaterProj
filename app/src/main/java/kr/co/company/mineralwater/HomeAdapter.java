@@ -271,4 +271,5 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         }
         return imageArr;
     }
+
 }

@@ -1,6 +1,9 @@
 package kr.co.company.mineralwater;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder>{
 
     private ArrayList<String> localDataSet;
+    private ArrayList<String> imageDataSet;
 
     // 뷰 홀더 클래스
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -72,8 +76,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     }
 
     // 생성자(생성자를 통해서 데이터 전달 받음)
-    public SearchAdapter(ArrayList<String> dataSet){
+    public SearchAdapter(ArrayList<String> dataSet,ArrayList<String> imagedataset){
         localDataSet = dataSet;
+        imageDataSet = imagedataset;
     } // Fragment에서 Adapter 호출 시 들어간 매개변수가 목록의 값
 
     @NonNull
@@ -88,6 +93,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.MyViewHolder holder, int position) {
         holder.textView.setText(localDataSet.get(position)); // 예제에서 getName() 임의로 제거
+        //생수 이미지 출력
+        ArrayList<Bitmap> bitArr = new ArrayList<>(); // 비트맵 보관할 ArrayList
+        for(int i=0; i<imageDataSet.size(); i++){
+            byte[] encodeByte = Base64.decode(imageDataSet.get(i), Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            bitmap = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+            bitArr.add(bitmap); // 이미지 코드를 비트맵으로 변환한 후 bitArr에 보관
+        }
+        holder.imageView.setImageBitmap(bitArr.get(position)); // 생수 이미지 출력
     }
 
     @Override
@@ -98,6 +112,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     // RecyclerView에 들어갈 searchList의 값을 변경하는 메소드
     public void setSearchList(ArrayList<String> searchList){
         this.localDataSet = searchList;
+        notifyDataSetChanged();
+    }
+
+    public void setImageList(ArrayList<String> imageList){
+        this.imageDataSet = imageList;
         notifyDataSetChanged();
     }
 
@@ -222,5 +241,25 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             e.printStackTrace();
         }
         return image;
+    }
+
+    // 홈 화면에 이미지 파싱
+    ArrayList<String> JSONParseForImageHome(String jsonStr){
+        ArrayList<String> imageArr = new ArrayList<>();
+        try{
+            JSONArray jsonArray = new JSONArray(jsonStr);
+            for(int i=0; i<jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String imageCode = jsonObject.getString("image");
+
+                imageCode = imageCode.replaceAll("img id=\\\"image_size\\\" src=\\\"data:image/jpeg;base64,","");
+                imageCode = imageCode.replaceAll("\"/>","");
+
+                imageArr.add(imageCode);
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return imageArr;
     }
 }

@@ -20,6 +20,7 @@ public class SearchFragment extends Fragment {
 
     private ArrayList<String> searchList = new ArrayList<>();
     private ArrayList<String> newSearchList = new ArrayList<>();
+    public ArrayList<String> imageList = new ArrayList<>(); // 생수 이미지 리스트
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private SearchView searchView;
@@ -32,14 +33,12 @@ public class SearchFragment extends Fragment {
     public ArrayList<String> warning_stage;
     public String price = "";
 
-    //private ImageView search_notice; // 검색 결과 없을 시 띄울 사진
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_menu2, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        adapter = new SearchAdapter(searchList);
+        adapter = new SearchAdapter(searchList, imageList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -51,10 +50,12 @@ public class SearchFragment extends Fragment {
             @Override
             public void run() {
                 searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
+                imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         adapter.setSearchList(searchList);
+                        adapter.setImageList(imageList);
                     }
                 });
             }
@@ -71,6 +72,7 @@ public class SearchFragment extends Fragment {
                     @Override
                     public void run() {
                         searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
+                        imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
                         newSearchList.clear();
                         for(int i=0; i<searchList.size(); i++){
                             if(searchList.get(i).contains(s)){ // 검색창 입력값을 포함하는 값인지 확인
@@ -81,6 +83,7 @@ public class SearchFragment extends Fragment {
                             @Override
                             public void run() {
                                 adapter.setSearchList(newSearchList); // 검색창에 입력된 결과를 RecyclerView에 출력
+                                adapter.setImageList(imageList);
 
                                 // 검색 결과가 없는 경우
                                 if(newSearchList.isEmpty()){
