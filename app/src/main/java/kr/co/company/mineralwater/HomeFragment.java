@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -45,6 +46,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 import java.util.Observable;
 
@@ -120,10 +122,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                 location = myGPS_text.getText().toString();
                             }
                             searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+location));
+                            imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+location));
                             getActivity().runOnUiThread(new Runnable(){
                                 @Override
                                 public void run(){
                                     adapter.setSearchList(searchList);
+                                    adapter.setImageList(imageList);
                                 }
                             });
                         }
@@ -139,10 +143,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                 location = myGPS_text.getText().toString();
                             }
                             searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-2.php?area="+location));
+                            imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-2.php?area="+location));
                             getActivity().runOnUiThread(new Runnable(){
                                 @Override
                                 public void run(){
                                     adapter.setSearchList(searchList);
+                                    adapter.setImageList(imageList);
                                 }
                             });
                         }
@@ -270,13 +276,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                             public void run(){
                                 if(result.equals("선택 안 함")){
                                     searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
+                                    imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
                                 }else{
                                     searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
+                                    imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?"+result));
                                 }
                                 getActivity().runOnUiThread(new Runnable(){
                                     @Override
                                     public void run(){
                                         adapter.setSearchList(searchList);
+                                        adapter.setImageList(imageList);
                                     }
                                 });
                             }

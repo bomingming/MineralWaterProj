@@ -37,8 +37,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        //public ArrayList<String> searchList = new ArrayList<>();
-        public ArrayList<String> imageList = new ArrayList<>();
         private TextView textView;
         private ImageView imageView;
 
