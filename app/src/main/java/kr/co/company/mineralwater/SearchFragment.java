@@ -19,8 +19,9 @@ import androidx.appcompat.widget.SearchView;
 public class SearchFragment extends Fragment {
 
     private ArrayList<String> searchList = new ArrayList<>();
-    private ArrayList<String> newSearchList = new ArrayList<>();
-    public ArrayList<String> imageList = new ArrayList<>(); // 생수 이미지 리스트
+    private ArrayList<String> newSearchList = new ArrayList<>(); // 검색 결과 담을 리스트
+    private ArrayList<String> imageList = new ArrayList<>(); // 생수 이미지 리스트
+    private ArrayList<String> newImageList = new ArrayList<>(); // 검색 결과 이미지 담을 리스트
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private SearchView searchView;
@@ -74,16 +75,18 @@ public class SearchFragment extends Fragment {
                         searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
                         imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/2.php"));
                         newSearchList.clear();
+                        newImageList.clear();
                         for(int i=0; i<searchList.size(); i++){
                             if(searchList.get(i).contains(s)){ // 검색창 입력값을 포함하는 값인지 확인
                                 newSearchList.add(searchList.get(i));
+                                newImageList.add(imageList.get(i));
                             }
                         }
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 adapter.setSearchList(newSearchList); // 검색창에 입력된 결과를 RecyclerView에 출력
-                                adapter.setImageList(imageList);
+                                adapter.setImageList(newImageList);
 
                                 // 검색 결과가 없는 경우
                                 if(newSearchList.isEmpty()){
@@ -147,8 +150,6 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
-
 
         return v;
     }
