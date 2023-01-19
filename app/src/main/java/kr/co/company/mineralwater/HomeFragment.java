@@ -279,7 +279,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                                     imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php"));
                                 }else{
                                     searchList = adapter.JSONParse(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
-                                    imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?"+result));
+                                    imageList = adapter.JSONParseForImageHome(adapter.JSONLink("https://wwater.xyz:4443/rjh/1-1.php?area="+result));
                                 }
                                 getActivity().runOnUiThread(new Runnable(){
                                     @Override
