@@ -12,6 +12,9 @@
     <!--GPS와 네트워크를 모두 사용하여 사용자의 정확한 위치를 가져오는 권한-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
