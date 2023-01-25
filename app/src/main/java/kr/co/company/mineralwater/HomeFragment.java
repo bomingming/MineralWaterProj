@@ -1,23 +1,39 @@
 package kr.co.company.mineralwater;
 
+import static android.content.Context.LOCATION_SERVICE;
+
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
@@ -28,11 +44,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public HomeAdapter adapter;
     public RadioGroup radioGroup;
 
-    //지역 관련 객체
-    private Button loc_button;
+    // 지역 관련 객체
+    private Button loc_button; // 직접 설정
+    private Button GPS_button; // GPS로 찾기
 
-    private ImageView gps_mark; // GPS 이미지 뷰
-    private ImageButton testButton; // 임의로 만들어 본 이미지 버튼
+    // GPS 활용
+    private GpsTracker gpsTracker;
+    private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
     public TextView myGPS_text;
 
     private String selectData; // 선택한 항목
@@ -58,6 +79,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         recyclerView.setAdapter(adapter);
 
         myGPS_text = (TextView) v.findViewById(R.id.myGPS_text);
+
+        // GPS 기능 활용
+        if(!checkLocationServicesStatus()){
+            showDialogForLocationServiceSetting();
+        }else{
+            checkRunTimePermission();
+        }
+
+        //GPS로 지역 선택
+        /*GPS_button = (Button)v.findViewById(R.id.GPS_button);
+        GPS_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });*/
+        GPS_button = (Button)v.findViewById(R.id.GPS_button);
+        GPS_button.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                gpsTracker = new GpsTracker(getActivity().getApplicationContext());
+
+                double latitude = gpsTracker.getLatitude();
+                double longitude = gpsTracker.getLongitude();
+
+                String address = getCurrentAddress(latitude, longitude);
+                myGPS_text.setText(address);
+            }
+        });
 
         new Thread(){
             @Override
@@ -153,6 +204,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         // 지역 임의 선택
         loc_button = (Button)v.findViewById(R.id.loc_button);
         loc_button.setOnClickListener(this);
+
+
 
         // RecyclerView 항목 클릭 시 선택한 항목의 값 받아오기
         adapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
@@ -264,4 +317,87 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+    public boolean checkLocationServicesStatus(){
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+
+    /*@Override
+    public void onRequestPermissionResult(int permsRequestCode, @NonNull String[] permissions, @NonNull int[] grandResults){
+        if(permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length){
+            boolean check_result = true;
+
+            for(int result : grandResults){
+                if(result != PackageManager.PERMISSION_GRANTED){
+                    check_result = false;
+                    break;
+                }
+            }
+            if(check_result){
+
+            }else{
+                if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0]) ||
+                        ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[1])){
+                    Toast.makeText(getActivity(), "퍼미션이 거부되었습니다.", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+        }
+    }*/
+
+    void checkRunTimePermission(){
+        int hasFineLocationPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION);
+        int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED && hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
+
+        }else{
+            if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0])){
+                ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
+            }else{
+                ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE);
+            }
+        }
+    }
+
+    public String getCurrentAddress(double latitude, double longitude){
+        Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+        List<Address> addresses;
+        try{
+            addresses = geocoder.getFromLocation(latitude, longitude, 7);
+        }catch (IOException ioException){
+            return "지오코더 서비스 사용 불가";
+        }catch (IllegalArgumentException illegalArgumentException){
+            return "잘못된 GPS 좌표";
+        }
+        if(addresses == null || addresses.size()==0){
+            return "주소 미발견";
+        }
+        Address address = addresses.get(0);
+        return address.getAddressLine(0).toString()+"\n";
+    }
+
+    private void showDialogForLocationServiceSetting(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("위치 서비스 활성화");
+        builder.setMessage("GPS를 사용하기 위해서는 위치 서비스가 필요합니다.\n위치 설정을 변경해주세요!");
+        builder.setCancelable(true);
+        builder.setPositiveButton("설정", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent callGPSSettingIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivityForResult(callGPSSettingIntent, GPS_ENABLE_REQUEST_CODE);
+            }
+        });
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        builder.create().show();
+    }
+
 }
