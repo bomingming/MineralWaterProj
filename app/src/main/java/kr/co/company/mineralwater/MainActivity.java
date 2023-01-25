@@ -13,14 +13,10 @@ import androidx.appcompat.app.ActionBar; // 액션바 다루기 위함
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    SearchView searchView; /*검색창*/
 
     private BottomNavigationView bottomNavigationView; /*하단 바*/
     private FragmentManager fragmentManager = getSupportFragmentManager(); /*각 화면들 구성*/
     private HomeFragment homeFragment = new HomeFragment();
-    private SearchFragment searchFragment = new SearchFragment();
-    private RankFragment rankFragment = new RankFragment();
-    private InfoFragment infoFragment = new InfoFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
         // 로딩창
         Intent intent = new Intent(this, LodingActivity.class);
         startActivity(intent);
-
-
-
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, homeFragment).commit();
@@ -68,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 기본적으로 액션바 보이지 않게 하기기
        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+       actionBar.hide();
 
     }
 }

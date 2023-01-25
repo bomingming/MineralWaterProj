@@ -30,5 +30,4 @@
         android:icon="@drawable/ic_baseline_info_24"
         android:title="개발자 정보"/>
 
-
 </menu>
