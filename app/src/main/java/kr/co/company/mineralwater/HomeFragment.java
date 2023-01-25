@@ -1,54 +1,23 @@
 package kr.co.company.mineralwater;
 
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.StrictMode;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.apache.http.params.HttpConnectionParams;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-//import org.reactivestreams.Subscriber;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.List;
-import java.util.Observable;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener{

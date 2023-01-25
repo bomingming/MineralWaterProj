@@ -49,7 +49,6 @@ public class LodingActivity extends Activity {
         }else if(isNetwork == true){ // 인터넷에 연결된 경우
             startLoading(); // 로딩 후 화면 전환
         }
-
     }
 
     DialogInterface.OnClickListener dialogListener = new DialogInterface.OnClickListener() {
