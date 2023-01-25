@@ -4,6 +4,7 @@ import android.accessibilityservice.AccessibilityService;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -42,7 +43,7 @@ public class LodingActivity extends Activity {
             builder.setIcon(android.R.drawable.ic_dialog_alert);
             builder.setTitle("종료");
             builder.setMessage("인터넷 연결이 원활하지 않아 어플이 종료됩니다.");
-            builder.setPositiveButton("확인", null);
+            builder.setPositiveButton("확인", dialogListener);
             alertDialog = builder.create();
             builder.show();
         }else if(isNetwork == true){ // 인터넷에 연결된 경우
@@ -50,6 +51,13 @@ public class LodingActivity extends Activity {
         }
 
     }
+
+    DialogInterface.OnClickListener dialogListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialogInterface, int i) {
+            finishAffinity(); // 어플 종료
+        }
+    };
 
     private void startLoading() {
         Handler handler = new Handler();
